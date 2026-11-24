@@ -1,0 +1,2641 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="dark" />
+<link rel="icon" href="data:," />
+<title>Clips Limpieza · Estudio Personal — Editor 9:16 gratis y sin límites</title>
+<meta name="description" content="Extrae de 1 a 1000 clips (ilimitado) de videos y directos, pégalos en 9:16 con tu marca de agua, subtítulos y efectos, y publícalos con título y hashtags. Gratis, sin códigos y sin límites." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#07050a; --bg2:#090708; --panel:#0b070a; --panel2:#110c0e; --panel3:#150d11;
+  --line:#21171b; --line2:#261b20; --line3:#2b1e23;
+  --text:#f5f0f2; --muted:#a89ca1; --faint:#9e9196;
+  --accent:#f43f5e; --accent-h:#e11d48; --accent-soft:rgba(244,63,94,.13);
+  --amber:#f59e0b; --emerald:#10b981; --cyan:#22d3ee;
+  --radius:16px; --font:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent);color:#fff}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+button,select,summary,input:not([type=checkbox]){min-height:2.25rem}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;border:1px solid transparent;font-weight:700;font-size:.95rem;padding:11px 22px;min-height:44px;text-decoration:none;background:var(--panel3);color:var(--text);text-align:center;transition:background .15s}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-h)}
+.btn-ghost{background:transparent;border-color:var(--line3);color:var(--text)}
+.btn-amber{background:var(--amber);color:#1a1200}
+.btn-emerald{background:var(--emerald);color:#02150d}
+.btn-sm{padding:8px 16px;min-height:38px;font-size:.88rem}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+/* header landing */
+.nav{position:sticky;top:0;z-index:60;background:rgba(7,5,10,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:18px;height:62px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.05rem;text-decoration:none;white-space:nowrap}
+.brand-mark{width:32px;height:32px;border-radius:9px;background:var(--accent);display:grid;place-items:center;flex:none;color:#fff;font-size:14px}
+.nav-links{display:flex;gap:4px;margin-left:auto}
+.nav-links a{text-decoration:none;color:var(--muted);font-weight:600;font-size:.92rem;padding:9px 12px;border-radius:9px;display:inline-flex;align-items:center}
+.nav-links a:hover{color:var(--text);background:var(--panel2)}
+/* hero */
+.hero{padding:76px 0 26px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(620px 300px at 50% -60px,rgba(244,63,94,.16),transparent 70%)}
+.pill{display:inline-flex;border:1px solid rgba(244,63,94,.45);color:#fb7185;background:var(--accent-soft);border-radius:999px;font-size:.74rem;font-weight:800;letter-spacing:.12em;padding:7px 14px;text-transform:uppercase}
+.hero h1{font-size:clamp(2.3rem,6vw,4.2rem);line-height:1.05;font-weight:900;letter-spacing:-.025em;margin:24px auto 0;max-width:920px;text-wrap:balance}
+.hero h1 .accent{color:var(--accent)}
+.hero p.sub{color:var(--muted);font-size:clamp(1rem,2vw,1.15rem);max-width:760px;margin:16px auto 0;text-wrap:balance}
+.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px;position:relative}
+section.block{padding:64px 0 8px}
+.sec-head{max-width:760px;margin:0 auto 34px;text-align:center}
+.sec-head h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;letter-spacing:-.02em;margin:0 0 10px}
+.sec-head p{color:var(--muted);margin:0}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--panel2);border:1px solid var(--line2);border-radius:var(--radius);padding:24px}
+.card .num{font-family:var(--mono);color:var(--accent);font-weight:700;font-size:.85rem}
+.card .kicker{color:var(--accent);font-size:.72rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;margin:10px 0 6px}
+.card h3{margin:0 0 8px;font-size:1.18rem;font-weight:800;line-height:1.25}
+.card p{margin:0;color:var(--muted);font-size:.94rem}
+.music-card{max-width:820px;margin:0 auto;background:var(--panel2);border:1px solid var(--line2);border-radius:var(--radius);padding:24px}
+.track-row{display:flex;align-items:center;gap:12px;border:1px solid var(--line2);border-radius:12px;padding:12px 14px;margin-top:10px;background:var(--panel3)}
+.track-row b{flex:1}
+.track-row span{color:var(--faint);font-size:.85rem}
+footer{border-top:1px solid var(--line);margin-top:70px;padding:28px 0 40px}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--faint);font-size:.88rem}
+footer b{color:var(--muted)}
+/* ===== STUDIO ===== */
+.studio-shell{border:1px solid var(--line2);border-radius:20px;background:var(--bg2);overflow:hidden}
+.studio{display:grid;grid-template-columns:224px minmax(0,1fr);min-height:600px}
+.sidebar{border-right:1px solid var(--line);padding:16px 12px;display:flex;flex-direction:column;gap:4px;background:var(--panel)}
+.sidebar .brand{font-size:.98rem;padding:2px 6px 14px}
+.side-btn{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:transparent;border:1px solid transparent;color:var(--muted);border-radius:11px;padding:11px 12px;font-weight:700;font-size:.92rem;min-height:46px}
+.side-btn:hover{color:var(--text);background:var(--panel2)}
+.side-btn.active{background:var(--accent-soft);border-color:rgba(244,63,94,.4);color:#fff}
+.side-badge{margin-left:auto;background:var(--accent);color:#fff;border-radius:999px;font-size:.7rem;font-weight:800;padding:2px 8px}
+.side-foot{margin-top:auto;border-top:1px solid var(--line);padding:14px 6px 2px;font-size:.85rem;color:var(--faint)}
+.side-foot b{display:block;font-size:.95rem;margin-top:2px}
+.side-foot .em{color:var(--emerald)} .side-foot .cy{color:var(--cyan)}
+.mobile-bar{display:none}
+.studio-main{display:flex;flex-direction:column;min-width:0}
+.crumb{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:13px 18px;border-bottom:1px solid var(--line);background:var(--panel2);font-size:.9rem;color:var(--faint)}
+.crumb b{color:var(--text)}
+.studio-workspace{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);flex:1;min-height:0}
+.panel{padding:18px;overflow-y:auto;max-height:760px;background:var(--panel);order:2}
+.panel h4{margin:0 0 4px;font-size:1rem;font-weight:800}
+.panel .hint{color:var(--faint);font-size:.84rem;margin:0 0 14px}
+.hint{color:var(--faint);font-size:.84rem}
+.panel-section{margin-bottom:20px}
+.field-label{display:block;font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:8px}
+.field{margin-bottom:14px}
+.field-row{display:flex;gap:8px}.field-row>*{flex:1}
+.field select,.field input,textarea.ta,input.txt-in{background:var(--panel3);border:1px solid var(--line3);color:var(--text);border-radius:10px;padding:9px 11px;font-size:.92rem;font-family:inherit;width:100%}
+input[type=range]{width:100%;accent-color:var(--accent);min-height:28px}
+input[type=color]{width:52px;height:38px;border:1px solid var(--line3);border-radius:9px;background:var(--panel3);padding:3px;cursor:pointer}
+.range-line{display:flex;align-items:center;gap:10px}
+.range-line output{font-family:var(--mono);font-size:.8rem;color:var(--muted);min-width:52px;text-align:right}
+.seg-toggle{display:flex;background:var(--panel3);border:1px solid var(--line3);border-radius:11px;padding:3px;gap:3px}
+.seg-toggle button{flex:1;background:transparent;border:none;color:var(--muted);border-radius:8px;font-weight:700;font-size:.86rem;padding:8px 6px;min-height:38px}
+.seg-toggle button.active{background:var(--accent);color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{background:var(--panel3);border:1px solid var(--line3);color:var(--muted);border-radius:999px;padding:8px 13px;font-size:.83rem;font-weight:700;min-height:38px}
+.chip.active{background:var(--accent-soft);border-color:var(--accent);color:#fff}
+.chip.amber.active{background:rgba(245,158,11,.15);border-color:var(--amber);color:#fbbf24}
+.pos-grid{display:flex;gap:6px;flex-wrap:wrap}
+.pos-grid button{width:44px;height:40px;border-radius:9px;background:var(--panel3);border:1px solid var(--line3);color:var(--faint);display:grid;place-items:center;padding:0}
+.pos-grid button svg{width:15px;height:15px;stroke:currentColor}
+.pos-grid button.active{border-color:var(--accent);color:#fb7185;background:var(--accent-soft)}
+.upload-btn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;border:1.5px dashed #3a2a30;border-radius:12px;background:var(--panel2);color:var(--text);font-weight:700;font-size:.92rem;padding:14px 12px;min-height:50px;text-align:center}
+.upload-btn:hover{border-color:var(--accent)}
+.upload-btn svg{width:19px;height:19px;stroke:#fb7185;flex:none}
+input[type=file].hidden-input{display:none}
+.link-box{border:1px solid var(--line2);border-radius:12px;background:var(--panel2);padding:14px}
+.srv-status{display:flex;align-items:flex-start;gap:9px;font-size:.86rem;color:var(--faint);margin-top:12px}
+.srv-status .sdot{width:10px;height:10px;border-radius:50%;background:#55555f;flex:none;margin-top:5px}
+.srv-status.on .sdot{background:var(--emerald)} .srv-status.off .sdot{background:#fb7185} .srv-status.blocked .sdot{background:#f5b83d}
+.srv-status b{color:var(--muted)} .srv-status.off b{color:#fb7185} .srv-status.blocked b{color:#f5b83d}
+.srv-diag{font-size:.78rem;color:var(--faint);margin:8px 0 0;word-break:break-all}
+.srv-help{margin-top:10px;border:1px solid var(--line2);border-radius:10px;background:var(--panel3);padding:12px 14px;font-size:.86rem;color:var(--muted)}
+.srv-help ol{margin:0 0 10px;padding-left:20px}.srv-help li{margin:4px 0}.srv-help b{color:var(--text)}
+.srv-help .mono{font-family:var(--mono);font-size:.8rem}
+/* stage */
+.stage{padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0;background:#0a0608;order:1;border-right:1px solid var(--line)}
+.stage-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.78rem;font-weight:800;letter-spacing:.1em;color:var(--faint)}
+.stage-head .live-st{margin-left:auto;letter-spacing:0;text-transform:none}
+.preview-wrap{position:relative;background:#000;border-radius:14px;overflow:hidden;aspect-ratio:16/9;width:100%;max-height:460px;margin:0 auto;border:1px solid var(--accent)}
+.preview-wrap.r-9-16{aspect-ratio:9/16;max-width:300px}
+.preview-wrap.r-1-1{aspect-ratio:1/1;max-width:430px}
+.preview-wrap video{width:100%;height:100%;object-fit:contain;display:block;background:#000}
+.preview-empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:24px;color:var(--faint);z-index:3}
+.preview-empty svg{width:44px;height:44px;stroke:#4a343c}
+.preview-empty b{color:var(--muted);font-size:1rem}
+.preview-empty span{font-size:.88rem;max-width:360px}
+.live-preview{position:absolute;inset:0;z-index:8;background:#000}
+.live-preview iframe{width:100%;height:100%;border:0;display:block;background:#000}
+.live-badge{position:absolute;top:10px;left:10px;display:inline-flex;align-items:center;gap:7px;background:rgba(0,0,0,.68);color:#fff;font-size:.7rem;font-weight:800;letter-spacing:.13em;padding:6px 11px;border-radius:999px;pointer-events:none}
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none;animation:livePulse 1.2s ease-in-out infinite}
+@keyframes livePulse{0%,100%{opacity:1}50%{opacity:.2}}
+.live-close{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.68);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;font-size:.76rem;font-weight:700;padding:7px 12px;min-height:34px;z-index:6}
+.live-note{position:absolute;left:10px;right:10px;bottom:10px;margin:0;pointer-events:none;background:rgba(0,0,0,.68);color:#e9e9f0;font-size:.78rem;line-height:1.4;padding:8px 11px;border-radius:9px}
+.cut-overlay{position:absolute;left:10px;bottom:10px;z-index:7;background:rgba(0,0,0,.72);color:#fbbf24;font-weight:800;font-size:.82rem;padding:8px 12px;border-radius:9px}
+.fade-veil{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity .22s;z-index:7}
+.vignette{position:absolute;inset:0;pointer-events:none;z-index:4;display:none;background:radial-gradient(ellipse at center,transparent 52%,rgba(0,0,0,.55) 100%)}
+.wm-overlay{position:absolute;pointer-events:none;z-index:5;line-height:1}
+.wm-overlay img{display:block;width:100%;height:auto}
+.wm-text{font-weight:900;color:#fff;white-space:nowrap;text-shadow:0 2px 10px rgba(0,0,0,.65)}
+.caption-overlay{position:absolute;left:50%;transform:translateX(-50%);z-index:6;pointer-events:none;font-weight:800;text-align:center;width:92%;line-height:1.25;white-space:pre-line;text-shadow:0 2px 4px rgba(0,0,0,.9);display:none}
+.caption-overlay.cap-top{top:6%}.caption-overlay.cap-bottom{bottom:7%}.caption-overlay.cap-center{top:50%;transform:translate(-50%,-50%)}
+.sticker-overlay{position:absolute;z-index:6;pointer-events:none;line-height:1}
+.transport{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.play-btn{width:46px;height:46px;border-radius:50%;background:var(--accent);border:none;color:#fff;display:grid;place-items:center;flex:none}
+.play-btn svg{width:18px;height:18px;fill:#fff}
+.time-read{font-family:var(--mono);font-size:.85rem;color:var(--muted);min-width:118px}
+.timeline{display:flex;gap:5px;min-height:58px;border:1px solid var(--line);border-radius:12px;padding:6px;background:var(--panel);overflow-x:auto}
+.timeline .seg{border-radius:8px;background:var(--panel3);border:1px solid var(--line3);color:var(--muted);font-size:.74rem;font-weight:700;padding:7px 9px;min-width:74px;display:flex;flex-direction:column;justify-content:center;gap:1px;cursor:pointer;text-align:left;overflow:hidden;white-space:nowrap}
+.timeline .seg small{font-family:var(--mono);color:var(--faint);font-size:.68rem}
+.timeline .seg.active{border-color:var(--accent);background:var(--accent-soft);color:#fff}
+.timeline .tl-empty{color:var(--faint);font-size:.85rem;display:flex;align-items:center;padding:0 8px}
+.timeline-meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--faint);font-size:.83rem;font-weight:600}
+.timeline-meta b{color:var(--muted)}
+/* editor tabs */
+.tool-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tool-btn{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid var(--line3);color:var(--muted);border-radius:10px;padding:9px 12px;font-weight:700;font-size:.86rem;min-height:40px}
+.tool-btn svg{width:16px;height:16px;stroke:currentColor}
+.tool-btn.active{background:var(--accent-soft);border-color:var(--accent);color:#fff}
+.clip-item,.text-item,.layer-item{border:1px solid var(--line2);border-radius:13px;background:var(--panel2);padding:12px;margin-bottom:10px}
+.clip-item.active{border-color:var(--accent)}
+.clip-item header,.text-item header,.layer-item header{display:flex;align-items:flex-start;gap:8px;margin-bottom:10px}
+.clip-name{font-weight:700;font-size:.9rem;line-height:1.3;word-break:break-word;flex:1}
+.clip-dur{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
+.icon-btn{width:36px;height:36px;border-radius:9px;background:var(--panel3);border:1px solid var(--line3);color:var(--muted);display:grid;place-items:center;padding:0;flex:none}
+.icon-btn svg{width:15px;height:15px;stroke:currentColor}
+.icon-btn.danger:hover{color:#fff;background:var(--accent-h);border-color:var(--accent-h)}
+.trim-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.trim-grid label{font-size:.72rem;color:var(--faint);font-weight:700;display:block;margin-bottom:4px}
+.trim-grid input,.trim-grid select{width:100%;background:var(--panel3);border:1px solid var(--line3);color:var(--text);border-radius:9px;padding:8px 9px;font-family:inherit;font-size:.85rem}
+.trim-grid input[type=number]{font-family:var(--mono)}
+.clip-actions{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.mini-btn{background:var(--panel3);border:1px solid var(--line3);color:var(--muted);border-radius:8px;font-size:.78rem;font-weight:700;padding:7px 10px;min-height:36px}
+.mini-btn:hover{color:#fff}
+.sound-group-label{font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:0 0 9px}
+.sound-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:20px}
+.sound-card{border:1px solid var(--line2);border-radius:13px;background:var(--panel2);padding:12px;text-align:left;display:flex;flex-direction:column;gap:3px;min-height:96px;color:var(--text);width:100%}
+.sound-card.in-layer{border-color:var(--emerald)}
+.sound-card .s-top{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.sound-card .s-name{font-weight:800;font-size:.9rem}
+.sound-card .s-desc{color:var(--faint);font-size:.76rem;line-height:1.35}
+.sound-card .s-play{width:34px;height:34px;border-radius:50%;background:var(--accent);display:grid;place-items:center;flex:none;border:none}
+.sound-card .s-play svg{width:12px;height:12px;fill:#fff;margin-left:2px}
+.sound-card .s-foot{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:auto;padding-top:6px}
+.sound-card .s-tag{font-size:.66rem;font-weight:800;letter-spacing:.08em;color:var(--emerald);text-transform:uppercase}
+.sound-card .s-add{background:var(--panel3);border:1px solid var(--line3);color:var(--muted);border-radius:7px;font-size:.72rem;font-weight:800;padding:6px 9px;min-height:32px}
+.output-box{background:var(--panel2);border:1px solid var(--line2);border-radius:12px;padding:13px;font-size:.92rem;margin-bottom:10px;word-break:break-word}
+.output-box .tags{color:#fb7185;font-weight:600}
+.output-box:empty{display:none}
+.progress{height:9px;background:var(--panel3);border-radius:99px;overflow:hidden;display:none}
+.progress i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.export-status{font-size:.85rem;color:var(--muted);min-height:1.2em}
+.check-line{display:flex;gap:9px;align-items:flex-start;font-size:.88rem;color:var(--muted);margin-bottom:7px}
+.check-line svg{width:16px;height:16px;stroke:var(--emerald);flex:none;margin-top:2px}
+.aviso{color:var(--amber);font-size:.88rem;font-weight:600;min-height:1.2em}
+.live-row{border:1px solid var(--line2);border-radius:12px;background:var(--panel2);padding:11px 12px;margin-bottom:9px;font-size:.88rem}
+.live-row b{color:var(--text)}
+.score-chip{display:inline-block;background:rgba(245,158,11,.15);color:#fbbf24;border:1px solid rgba(245,158,11,.4);border-radius:999px;font-size:.72rem;font-weight:800;padding:2px 9px;margin-left:6px}
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,80px);z-index:120;background:#1d1418;border:1px solid var(--line3);color:var(--text);border-radius:12px;padding:12px 18px;font-weight:600;font-size:.92rem;box-shadow:0 16px 40px rgba(0,0,0,.5);transition:transform .3s;max-width:92vw;text-align:center}
+.toast.show{transform:translate(-50%,0)}
+.faq{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.faq details{background:var(--panel2);border:1px solid var(--line2);border-radius:14px;padding:4px 20px}
+.faq summary{font-weight:700;font-size:1rem;padding:13px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:48px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--accent);font-size:1.4rem;font-weight:800}
+.faq details[open ] summary::after{content:"–"}
+.faq details p{color:var(--muted);margin:0 0 16px;font-size:.95rem}
+@media (max-width:1020px){
+  .grid-3{grid-template-columns:repeat(2,1fr)}
+  .studio{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .sidebar.open{display:flex;border-right:none;border-bottom:1px solid var(--line)}
+  .mobile-bar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--panel)}
+  .studio-workspace{grid-template-columns:1fr}
+  .panel{max-height:none;order:2}
+  .stage{order:1;border-right:none;border-bottom:1px solid var(--line)}
+}
+@media (max-width:640px){
+  .grid-3{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .brand{font-size:.92rem;gap:7px}
+  .brand .brand-sub{display:none}
+  .nav-in{gap:8px}
+  .nav-in .btn{padding:8px 11px;font-size:.78rem;white-space:nowrap;margin-left:auto}
+  .hero{padding:52px 0 8px}
+  .time-read{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}.live-dot{animation:none}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">▶</span>Clips Limpieza <span class="brand-sub" style="color:var(--faint);font-weight:600;font-size:.85rem">· Estudio Personal</span></a>
+    <nav class="nav-links" aria-label="Secciones">
+      <a href="#musica">Reproductor</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="#estudio" style="margin-left:8px">Abrir Estudio Personal</a>
+  </div>
+</header>
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <span class="pill">100% GRATIS · Sin código · Sin límites</span>
+      <h1>Extrae, pega tus clips y <span class="accent">publícalos directo.</span></h1>
+      <p class="sub">Saca de 1 a 1000 clips (Ilimitado) de cualquier video o streaming en vivo, pégalos uno tras de otro en 9:16 con tu marca de agua y súbelos directo con título y hashtags virales. Todo gratis, para siempre.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#estudio" id="heroLinkBtn">⚡ Entrar al Editor y Pegar Clips →</a>
+        <a class="btn btn-ghost" href="#musica">🎵 Escuchar música</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="block" id="herramientas">
+    <div class="wrap">
+      <div class="grid-3">
+        <article class="card"><div class="num">01</div><div class="kicker">1 A 1000 / ILIMITADO</div><h3>Control total de cantidad y segundos</h3><p>Elige de 1 a 1000 clips (al poner 1000 activa Ilimitado) y define los segundos exactos de cada corte.</p></article>
+        <article class="card"><div class="num">02</div><div class="kicker">PEGADO NATIVO</div><h3>Pega todos los clips uno tras de otro</h3><p>Une cortes de YouTube, TikTok, Kick, Twitch o directos en vivo en un solo video largo, pegados en tu propio navegador.</p></article>
+        <article class="card"><div class="num">03</div><div class="kicker">MARCA Y EFECTOS</div><h3>Tu marca de agua, logo, stickers y subtítulos</h3><p>Personaliza cada video con tu propia marca de agua, filtros visuales y potencia de audio, en la calidad que elijas según el video original.</p></article>
+        <article class="card"><div class="num">04</div><div class="kicker">VIRAL AUTOMÁTICO</div><h3>Título viral + hashtags listos</h3><p>Genera automáticamente el título viral y los hashtags acordes al contenido al terminar de pegar los clips.</p></article>
+        <article class="card"><div class="num">05</div><div class="kicker">SUBIDA DIRECTA</div><h3>Publica en todas tus redes monetizadas</h3><p>Envía directo a YouTube Shorts, TikTok, Instagram Reels, Facebook Reels y X con título y hashtags copiados.</p></article>
+        <article class="card"><div class="num">06</div><div class="kicker">USO PERSONAL</div><h3>Sin códigos, sin límites ni esperas</h3><p>Todo pasa en tu propio equipo: al terminar de pegar los clips, el video final se descarga en tu computadora.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="musica">
+    <div class="wrap">
+      <div class="sec-head"><h2>Más de DJ Trucho Hd</h2><p>Reproductor de música gratis: escucha los ritmos sintetizados sin copyright, o añade tus propios archivos de audio.</p></div>
+      <div class="music-card">
+        <h3 style="margin:0">🎵 Reproductor de música</h3>
+        <p class="hint">Tres ritmos generados al momento, libres de copyright. También puedes reproducir un archivo tuyo:</p>
+        <div class="track-row"><b>Ritmo suave</b><span>Fondo tranquilo · sin copyright</span><button class="btn btn-primary btn-sm" type="button" data-demo-track="ritmo">▶ Escuchar</button></div>
+        <div class="track-row"><b>Tensión</b><span>Misterio y suspenso · sin copyright</span><button class="btn btn-primary btn-sm" type="button" data-demo-track="tension">▶ Escuchar</button></div>
+        <div class="track-row"><b>Alegre</b><span>Optimista · sin copyright</span><button class="btn btn-primary btn-sm" type="button" data-demo-track="alegre">▶ Escuchar</button></div>
+        <div class="field" style="margin-top:14px"><label class="field-label" for="ownAudio">Tu propio archivo de audio</label><input class="txt-in" type="file" id="ownAudio" accept="audio/*" /></div>
+        <audio id="ownAudioPlayer" controls style="width:100%" hidden></audio>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="estudio">
+    <div class="wrap">
+      <div class="sec-head"><h2>Estudio Personal TikTok &amp; Shorts</h2><p>Directos en vivo, videos por enlace, editor 9:16 y publicación — todo en un solo lugar, sin pagar nada.</p></div>
+      <div class="studio-shell">
+        <div class="mobile-bar"><button class="btn btn-ghost btn-sm" type="button" id="menuToggle">☰ Menú</button><b>Clips Limpieza 9:16</b></div>
+        <div class="studio">
+          <aside class="sidebar" id="sidebar">
+            <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">▶</span>Clips Limpieza 9:16</a>
+            <button class="side-btn" type="button" data-sec="videos"><span aria-hidden="true">▷</span>Videos y Enlaces</button>
+            <button class="side-btn active" type="button" data-sec="directos"><span aria-hidden="true">●</span>En Vivos / Streaming</button>
+            <button class="side-btn" type="button" data-sec="editor"><span aria-hidden="true">✂</span>Editor 9:16 y Pegar<span class="side-badge" id="badgeCortes" hidden>0</span></button>
+            <button class="side-btn" type="button" data-sec="publicar"><span aria-hidden="true">🚀</span>Publicar y Biblioteca<span class="side-badge" id="badgeClips" hidden>0</span></button>
+            <div class="side-foot">
+              Modo Captura:<b class="em" id="sideModo">∞ Ilimitado (Sin límite)</b>
+              Sesión Actual:<b class="cy" id="sideSesion">0 videos MP4</b>
+            </div>
+          </aside>
+          <div class="studio-main">
+            <div class="crumb"><span>Estudio Personal TikTok &amp; Shorts / <b id="crumbLabel">En Vivos / Streaming</b></span><span style="flex:1"></span><span class="status" id="studioStatus" style="color:var(--faint);font-size:.85rem">Sin clips todavía</span><button class="btn btn-primary btn-sm" type="button" id="goPegarBtn" hidden>✂ Ir a Pegar <span id="goPegarN">0</span> Clips en 9:16 →</button></div>
+            <div class="studio-workspace">
+              <div class="panel" id="panelRoot">
+<!-- ===== PANEL EN VIVO / VIDEOS ===== -->
+<div id="panelLive">
+  <h4 id="liveTitle">Ver Streaming En Vivo y Cortar Sin Parar</h4>
+  <p class="hint">● TIKTOK &amp; SHORTS 9:16 · TIEMPO REAL SIN LÍMITE. Pega el enlace y míralo <b>en vivo</b> en la pantalla 9:16 mientras cortas. Para bajar un video ya publicado (o un directo que ya terminó) usa «Cargar video»: lo baja el servidor de tu PC y entra como clip al editor.</p>
+  <div class="panel-section">
+    <label class="field-label" for="linkInput">Enlace del video o directo — pégalo aquí</label>
+    <input class="txt-in" type="url" id="linkInput" placeholder="Pega enlace de TikTok Live, YouTube Live, Kick, Twitch o Facebook..." autocomplete="off" style="font-size:1rem;padding:13px 12px" />
+    <p class="hint" id="origenDetectado" style="margin:8px 0 0;color:#f43f5e;font-weight:700" hidden></p>
+  </div>
+  <div class="panel-section">
+    <label class="field-label" for="segClip">Segundos por cada clip: <span id="segClipVal" style="color:#fb7185">15s</span></label>
+    <input class="txt-in" type="number" id="segClip" value="15" min="3" max="300" step="1" />
+    <div class="chips" id="segChips" style="margin-top:8px">
+      <button type="button" class="chip active" data-seg="15">15s</button>
+      <button type="button" class="chip" data-seg="30">30s</button>
+      <button type="button" class="chip" data-seg="45">45s</button>
+      <button type="button" class="chip" data-seg="60">60s</button>
+      <button type="button" class="chip" data-seg="90">90s</button>
+    </div>
+  </div>
+  <div class="panel-section">
+    <label class="field-label" for="cantSlider">Cantidad (1 a 100 → Ilimitado): <span id="cantVal" style="color:var(--emerald)">∞ ILIMITADO</span></label>
+    <input type="range" id="cantSlider" min="1" max="100" value="100" />
+    <div class="chips" id="cantChips" style="margin-top:6px">
+      <button type="button" class="chip" data-cant="5">5</button>
+      <button type="button" class="chip" data-cant="15">15</button>
+      <button type="button" class="chip" data-cant="30">30</button>
+      <button type="button" class="chip" data-cant="50">50</button>
+      <button type="button" class="chip" data-cant="80">80</button>
+      <button type="button" class="chip active" data-cant="100">100 · ∞ Ilimitado</button>
+    </div>
+  </div>
+  <div class="panel-section">
+    <label class="field-label" for="encuadreSel">Encuadre Vertical 9:16</label>
+    <select id="encuadreSel" style="background:var(--panel3);border:1px solid var(--line3);color:var(--text);border-radius:10px;padding:9px 11px;width:100%;font-family:inherit">
+      <option value="blur">9:16 Stream Completo + Fondo Difuminado</option>
+      <option value="crop">9:16 Pantalla Llena (Zoom Centro)</option>
+    </select>
+  </div>
+  <div class="panel-section">
+    <label class="field-label" for="wmLive">Marca de Agua</label>
+    <input class="txt-in" type="text" id="wmLive" placeholder="@TuMarca" maxlength="40" />
+  </div>
+  <div class="panel-section">
+    <label style="display:flex;gap:9px;align-items:flex-start;font-size:.88rem;color:var(--muted);cursor:pointer">
+      <input type="checkbox" id="autoCutChk" checked style="width:18px;height:18px;accent-color:var(--accent);flex:none;margin-top:2px" />
+      <span><b style="color:var(--text)">Auto-Cortar Continuo (Modo Dormir):</b> Va cortando y guardando en disco en tiempo real cada <span class="segEcho">15</span>s sin detenerse ni llenar RAM. En esta página los cortes quedan marcados en la lista de la sesión con su segundo de inicio y fin; cada uno se baja con su botón «Cortar / Descargar» (el servidor baja videos ya grabados: un directo en curso lo rechaza hasta que termina).</span>
+    </label>
+  </div>
+  <div class="panel-section" style="display:flex;flex-direction:column;gap:9px">
+    <button class="btn btn-primary" type="button" id="liveStartBtn" style="width:100%">▶ Ver En Vivo y Cortar ILIMITADO</button>
+    <button class="btn btn-amber" type="button" id="bestBtn" style="width:100%">⚡ Sacar mejores momentos</button>
+    <button class="btn btn-emerald" type="button" id="liveStopBtn" style="width:100%" hidden>⏹ Detener En Vivo (<span id="liveStopN">0</span> guardados)</button>
+    <div class="field-row">
+      <button class="btn btn-ghost btn-sm" type="button" id="screenBtn">🔴 Capturar Pantalla en Vivo</button>
+      <button class="btn btn-ghost btn-sm" type="button" id="uploadLiveBtn">↑ Subir Video</button>
+    </div>
+    <p class="aviso" id="avisoLink" role="status" aria-live="polite"></p>
+  </div>
+  <div class="panel-section">
+    <div class="link-box">
+      <span class="field-label">Sesión en vivo</span>
+      <p class="hint" id="liveSessionHead" style="margin:0 0 8px">● DIRECTO EN VIVO · 0 CLIPS DE ESTA SESIÓN</p>
+      <div id="liveClipList"><p class="hint" style="margin:0">Todavía no hay clips de esta sesión. Pulsa «Ver En Vivo y Cortar» y aquí van apareciendo, bloque a bloque.</p></div>
+      <div class="field-row" style="margin-top:10px">
+        <button class="btn btn-ghost btn-sm" type="button" id="liveClearBtn">🗑 Limpiar Lista</button>
+        <button class="btn btn-primary btn-sm" type="button" id="liveToEditorBtn">✂ Llevar TODOS al Editor 9:16 →</button>
+      </div>
+    </div>
+  </div>
+  <div class="panel-section" id="bestBox" hidden>
+    <div class="link-box">
+      <span class="field-label" id="bestHead">Mejores momentos</span>
+      <p class="hint" id="bestNote" style="margin:0 0 8px"></p>
+      <div id="bestList"></div>
+    </div>
+  </div>
+  <div class="panel-section">
+    <div class="link-box">
+      <span class="field-label">Bajar el video con tu servidor (videos ya publicados)</span>
+      <div class="field-row" style="margin-bottom:10px">
+        <div class="field" style="margin:0"><label class="field-label" for="linkStart">Desde el segundo</label><input class="txt-in" type="number" id="linkStart" value="0" min="0" step="1" inputmode="numeric" /></div>
+        <div class="field" style="margin:0"><label class="field-label" for="linkEnd">Hasta el segundo</label><input class="txt-in" type="number" id="linkEnd" value="600" min="1" step="1" inputmode="numeric" /></div>
+      </div>
+      <p class="hint" style="margin:0 0 12px">Tu servidor baja un tramo de hasta 10 minutos (600 segundos) por carga. Déjalo en 0 y 600 para traer el principio; para un tramo de más adelante escribe sus segundos (desde 120 hasta 720 trae del minuto 2 al 12). El recorte fino lo haces en el Editor.</p>
+      <button class="btn btn-primary" type="button" id="loadLinkBtn" style="width:100%;font-size:1rem;padding:13px 22px">Cargar video</button>
+      <div class="field" style="margin:16px 0 0">
+        <label class="field-label" for="serverInput">Servidor en tu PC</label>
+        <input class="txt-in" type="url" id="serverInput" value="http://localhost:4000" autocomplete="off" />
+        <p class="hint" style="margin:6px 0 0">Déjalo así si tu servidor corre en el puerto 4000. Si usas el túnel público, pega aquí la dirección https://…trycloudflare.com que muestra la terminal de tu PC: cambia cada vez que reinicias el servidor.</p>
+      </div>
+      <p class="hint" style="margin:14px 0 0">Sin códigos ni claves: esta página habla directamente con el servidor de tu PC. Solo tiene que estar encendido y ser la versión sin clave (la que no pide ninguna autorización al cargar).</p>
+      <div class="srv-status" id="srvStatus" role="status" aria-live="polite"><span class="sdot" aria-hidden="true"></span><span id="srvStatusText">Comprobando el servidor…</span></div>
+      <p class="srv-diag" id="srvDiag" hidden></p>
+      <p class="hint" style="margin:8px 0 0">Pruébalo tú mismo: <a href="http://localhost:4000/salud" id="srvOpenLink" target="_blank" rel="noopener" style="color:#fb7185;font-weight:700">abre la dirección del servidor en una pestaña nueva</a>. Si ahí sí responde, el servidor está bien y lo que falla es la conexión desde esta página.</p>
+      <div class="srv-help" id="srvHelpLocal" hidden>
+        <p>Si la terminal de tu PC dice «Servidor de clips listo», el servidor <b>sí está encendido</b> y lo que falla es el permiso de <b>red local</b> del navegador:</p>
+        <ol><li>Deja el servidor corriendo en la terminal de VS Code.</li><li>Toca el icono de ajustes del sitio, a la izquierda de la dirección de esta página, y abre la configuración del sitio.</li><li>Busca <b>«Red local»</b> y déjalo en <b>Permitir</b>.</li><li>Vuelve aquí y pulsa «Comprobar otra vez».</li></ol>
+      </div>
+      <div class="srv-help" id="srvHelpTunnel" hidden>
+        <p>Estás usando la <b>dirección pública del túnel</b>. Si no conecta:</p>
+        <ol><li>El servidor se reinició y el túnel dio una <b>dirección nueva</b>: pega aquí la línea «Túnel público: https://…» de la terminal.</li><li>El servidor o el túnel se cerraron: déjalos corriendo y pulsa «Comprobar otra vez».</li></ol>
+        <p>El túnel a veces tarda en despertar: la comprobación espera más con esta dirección. Y aunque el aviso diga «sin conexión», pulsa <b>«Cargar video»</b> igual: la página intenta la carga directamente, porque a veces la comprobación falla aunque el servidor esté encendido.</p>
+        <p>Con el túnel <b>no</b> hace falta el permiso de «Red local». Si la dirección responde en una pestaña nueva pero aquí no, abre esta página directamente en el navegador de tu PC, fuera de la app.</p>
+      </div>
+      <div class="srv-help" id="srvHelpCors" hidden>
+        <p>Tu servidor <b>contestó</b>, pero no le da permiso a esta página para leer sus respuestas (permiso <b>CORS</b>):</p>
+        <ol><li>Actualiza el archivo del servidor (<span class="mono">servidor-clips\server.mjs</span>) a la versión que permite el acceso desde esta página.</li><li>Reinicia el servidor y, si sale una dirección de túnel nueva, pégala aquí.</li><li>Pulsa «Comprobar otra vez».</li></ol>
+      </div>
+      <button class="btn btn-ghost btn-sm" type="button" id="srvRetryBtn" style="margin-top:10px">Comprobar otra vez</button>
+      <button class="btn btn-ghost btn-sm" type="button" id="srvCancelBtn" style="margin-top:10px" hidden>Detener comprobación</button>
+      <p class="hint" style="margin:10px 0 0">El enlace lo baja un servidor local (con yt-dlp) que debe estar corriendo en tu PC; el navegador por sí solo no puede bajar videos de YouTube o TikTok. No necesitas ningún código ni clave: con el servidor encendido, pulsa «Cargar video» y listo.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== EDITOR ===== -->
+<div id="panelEditor" hidden>
+  <div class="tool-row" role="tablist" aria-label="Herramientas del editor">
+    <button class="tool-btn active" type="button" data-tab="clips" role="tab" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.5 15.5M14.5 14.5 20 20M8.5 8.5 12 12"/></svg><span id="pegarTabLabel">✂ Pegar Clips (0)</span></button>
+    <button class="tool-btn" type="button" data-tab="texto" role="tab" aria-selected="false">Subtítulos</button>
+    <button class="tool-btn" type="button" data-tab="marca" role="tab" aria-selected="false">🏷️ Marca de Agua</button>
+    <button class="tool-btn" type="button" data-tab="stickers" role="tab" aria-selected="false">Stickers</button>
+    <button class="tool-btn" type="button" data-tab="efectos" role="tab" aria-selected="false">🎨 Encuadre/Efectos</button>
+    <button class="tool-btn" type="button" data-tab="sonidos" role="tab" aria-selected="false">Sonidos</button>
+  </div>
+
+  <div class="tab-panel" data-panel="clips">
+    <h4>Pegar clips uno tras de otro</h4>
+    <p class="hint">Sube uno o varios videos (o tráelos desde «Videos y Enlaces») y recorta cada uno marcando inicio y fin. Al exportar se pegan en este orden, en un solo video.</p>
+    <div class="panel-section">
+      <label class="field-label" for="projectName">Nombre del proyecto</label>
+      <input class="txt-in" type="text" id="projectName" placeholder="Ej.: Mejores momentos del directo" maxlength="60" />
+    </div>
+    <div class="panel-section">
+      <button class="upload-btn" type="button" id="pickFilesBtn"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4m0 0 4 4m-4-4L8 8"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>Subir videos desde tu equipo</button>
+      <input class="hidden-input" type="file" id="fileInput" accept="video/*" multiple />
+    </div>
+    <div class="panel-section">
+      <div class="link-box" style="text-align:center">
+        <span class="field-label">¿Video en YouTube o TikTok?</span>
+        <p class="hint" style="margin:0 0 12px">Pega su enlace en «Videos y Enlaces» y haz los cortes aquí mismo.</p>
+        <button class="btn btn-primary btn-sm" type="button" id="goEnlacesBtn" style="width:100%">Ir a pegar un enlace →</button>
+      </div>
+    </div>
+    <div id="cortesQueueBox" hidden>
+      <span class="field-label">Cortes traídos de la sesión en vivo</span>
+      <div id="cortesQueueList"></div>
+    </div>
+    <div id="clipList"></div>
+    <button class="btn btn-primary" type="button" id="pasteExportBtn" style="width:100%">✂ Pegar y Exportar</button>
+    <p class="hint" style="margin-top:8px">La exportación pega los clips en tu navegador y descarga el video final. Si tu navegador no puede grabar video, te lo avisa con el motivo real.</p>
+  </div>
+
+  <div class="tab-panel" data-panel="marca" hidden>
+    <h4>Tu marca de agua</h4>
+    <p class="hint">Que cada clip lleve tu sello: tu logo o tu nombre de usuario, como los canales profesionales.</p>
+    <div class="panel-section"><span class="field-label">Mostrar marca</span>
+      <div class="seg-toggle" id="wmOnToggle"><button type="button" data-wm-on="1" class="active">Activada</button><button type="button" data-wm-on="0">Desactivada</button></div></div>
+    <div class="panel-section"><span class="field-label">Tipo de marca</span>
+      <div class="seg-toggle" id="wmTypeToggle"><button type="button" data-wm-type="text" class="active">Texto</button><button type="button" data-wm-type="image">Mi logo</button></div></div>
+    <div class="panel-section" id="wmTextBox"><label class="field-label" for="wmText">Tu texto o usuario</label><input class="txt-in" type="text" id="wmText" value="@MiCanal" maxlength="40" /></div>
+    <div class="panel-section" id="wmImageBox" hidden>
+      <button class="upload-btn" type="button" id="pickLogoBtn"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>Subir mi logo (PNG o JPG)</button>
+      <input class="hidden-input" type="file" id="logoInput" accept="image/*" />
+      <p class="hint" style="margin-top:8px" id="logoName">Ningún logo cargado todavía. Un PNG con fondo transparente se ve mejor.</p>
+    </div>
+    <div class="panel-section"><span class="field-label">Posición en el video</span>
+      <div class="pos-grid" id="wmPosGrid" role="group" aria-label="Posición de la marca de agua">
+        <button type="button" data-pos="tl" aria-label="Arriba a la izquierda"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M15 5H5v10"/></svg></button>
+        <button type="button" data-pos="tr" aria-label="Arriba a la derecha"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M9 5h10v10"/></svg></button>
+        <button type="button" data-pos="cc" aria-label="Centro"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="3"/></svg></button>
+        <button type="button" data-pos="bl" aria-label="Abajo a la izquierda"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M15 19H5V9"/></svg></button>
+        <button type="button" data-pos="br" class="active" aria-label="Abajo a la derecha"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M9 19h10V9"/></svg></button>
+      </div></div>
+    <div class="panel-section"><label class="field-label" for="wmColor">Color del texto</label><input type="color" id="wmColor" value="#ffffff" /></div>
+    <div class="panel-section"><label class="field-label" for="wmSize">Tamaño</label><div class="range-line"><input type="range" id="wmSize" min="40" max="220" value="100" /><output id="wmSizeOut">100%</output></div></div>
+    <div class="panel-section"><label class="field-label" for="wmOpacity">Opacidad</label><div class="range-line"><input type="range" id="wmOpacity" min="15" max="100" value="85" /><output id="wmOpacityOut">85%</output></div></div>
+  </div>
+
+  <div class="tab-panel" data-panel="texto" hidden>
+    <h4>Subtítulos</h4>
+    <p class="hint">Hasta 5 líneas de subtítulos. Cada una aparece entre su segundo de inicio y su fin, contando desde el principio del video ya pegado.</p>
+    <div id="textList"></div>
+    <button class="btn btn-ghost btn-sm" type="button" id="addTextBtn" style="width:100%">+ Añadir subtítulo</button>
+    <button class="btn btn-ghost btn-sm" type="button" id="autoSubBtn" style="width:100%;margin-top:9px">Generar subtítulos automáticos</button>
+    <p class="hint" id="autoSubNote" style="margin-top:8px">Usa el reconocimiento de voz de tu navegador mientras se reproduce el video, si está disponible. Si no, hace falta la transcripción del audio: escribe las líneas aquí a mano con sus segundos.</p>
+  </div>
+
+  <div class="tab-panel" data-panel="stickers" hidden>
+    <h4>Stickers</h4>
+    <p class="hint">Toca un emoji para ponerlo sobre el video, o sube tu propia imagen. Ajusta su tamaño y muévelo con los botones de posición.</p>
+    <div class="panel-section"><span class="field-label">Emojis</span><div class="chips" id="stickerChips"></div></div>
+    <div class="panel-section">
+      <button class="upload-btn" type="button" id="pickStickerBtn">Subir imagen de sticker</button>
+      <input class="hidden-input" type="file" id="stickerInput" accept="image/*" />
+    </div>
+    <div class="panel-section"><label class="field-label" for="stickerSize">Tamaño</label><div class="range-line"><input type="range" id="stickerSize" min="30" max="200" value="100" /><output id="stickerSizeOut">100%</output></div></div>
+    <div class="panel-section"><span class="field-label">Posición</span>
+      <div class="chips" id="stickerPos">
+        <button type="button" class="chip" data-spos="tl">↖ Arriba izq.</button>
+        <button type="button" class="chip active" data-spos="tr">↗ Arriba der.</button>
+        <button type="button" class="chip" data-spos="cc">Centro</button>
+        <button type="button" class="chip" data-spos="bl">↙ Abajo izq.</button>
+        <button type="button" class="chip" data-spos="br">↘ Abajo der.</button>
+      </div></div>
+    <button class="btn btn-ghost btn-sm" type="button" id="stickerClearBtn" style="width:100%">Quitar sticker</button>
+  </div>
+
+  <div class="tab-panel" data-panel="efectos" hidden>
+    <h4>Encuadre y efectos</h4>
+    <p class="hint">Formato, filtros y potencia de audio. Todo incluido, sin pagar extra.</p>
+    <div class="panel-section"><span class="field-label">Efectos</span>
+      <div class="chips" id="filterChips">
+        <button type="button" class="chip active" data-filter="none">Normal (Original)</button>
+        <button type="button" class="chip" data-filter="vivido">Vibrante 🔥</button>
+        <button type="button" class="chip" data-filter="vintage">Cine 🎬</button>
+        <button type="button" class="chip" data-filter="contraste">Alto Contraste ⚡</button>
+        <button type="button" class="chip" data-filter="bn">Blanco y Negro 🖤</button>
+        <button type="button" class="chip" data-filter="calido">Cálido ☀️</button>
+        <button type="button" class="chip" data-filter="frio">Frío</button>
+      </div></div>
+    <div class="panel-section"><label class="field-label" for="adjBright">Brillo</label><div class="range-line"><input type="range" id="adjBright" min="40" max="180" value="100" /><output id="adjBrightOut">100</output></div></div>
+    <div class="panel-section"><label class="field-label" for="adjContrast">Contraste</label><div class="range-line"><input type="range" id="adjContrast" min="40" max="180" value="100" /><output id="adjContrastOut">100</output></div></div>
+    <div class="panel-section"><label class="field-label" for="adjSat">Saturación</label><div class="range-line"><input type="range" id="adjSat" min="0" max="220" value="100" /><output id="adjSatOut">100</output></div></div>
+    <div class="panel-section"><label class="field-label" for="speedSel">Velocidad de reproducción</label>
+      <select id="speedSel" style="background:var(--panel3);border:1px solid var(--line3);color:var(--text);border-radius:10px;padding:9px 11px;width:100%;font-family:inherit">
+        <option value="0.5">0.5x</option><option value="0.75">0.75x</option><option value="1" selected>1x</option><option value="1.25">1.25x</option><option value="1.5">1.5x</option><option value="2">2x</option>
+      </select>
+      <p class="hint" style="margin-top:6px">Se aplica también por clip en la pestaña «Pegar Clips».</p></div>
+    <div class="panel-section"><label class="field-label" for="audioGain">Potencia de audio</label><div class="range-line"><input type="range" id="audioGain" min="50" max="200" value="125" /><output id="audioGainOut">1.25x</output></div></div>
+    <div class="panel-section"><span class="field-label">Transición entre clips</span>
+      <div class="chips" id="transitionChips">
+        <button type="button" class="chip" data-transition="none">Corte directo</button>
+        <button type="button" class="chip active" data-transition="fade">Fundido a negro</button>
+        <button type="button" class="chip" data-transition="flash">Destello</button>
+      </div></div>
+    <div class="panel-section"><span class="field-label">Toques finales</span>
+      <div class="chips" id="fxChips">
+        <button type="button" class="chip" data-fx="fadeIO">Fundido de entrada y salida</button>
+        <button type="button" class="chip" data-fx="mirror">Espejo</button>
+        <button type="button" class="chip" data-fx="vignette">Viñeta</button>
+      </div></div>
+    <div class="panel-section"><span class="field-label">Encuadre</span>
+      <div class="chips" id="frameChips">
+        <button type="button" class="chip active" data-frame="blur">Fondo difuminado</button>
+        <button type="button" class="chip" data-frame="crop">Pantalla llena (zoom centro)</button>
+      </div>
+      <p class="hint" style="margin-top:6px">Con fondo difuminado el video se ve completo; con pantalla llena llena el 9:16 recortando los lados.</p></div>
+    <div class="panel-section"><button class="btn btn-ghost btn-sm" type="button" id="resetFxBtn">Restablecer efectos</button></div>
+  </div>
+
+  <div class="tab-panel" data-panel="sonidos" hidden>
+    <h4>Sonidos libres de copyright</h4>
+    <p class="hint">Toca una tarjeta para escuchar. Con «+ Capa» lo añades a tu video (hasta 4 capas), mezclado con el audio original. No se incluyen sonidos de TikTok/CapCut: tienen copyright.</p>
+    <p class="sound-group-label">Efectos de sonido</p>
+    <div class="sound-grid" id="fxSoundGrid"></div>
+    <p class="sound-group-label">Música de fondo</p>
+    <div class="sound-grid" id="musicSoundGrid"></div>
+    <div class="panel-section"><span class="field-label">Capas de sonido de tu video</span><div id="layerList"></div></div>
+  </div>
+</div>
+
+<!-- ===== PUBLICAR Y BIBLIOTECA ===== -->
+<div id="panelPublicar" hidden>
+  <div class="tab-panel" data-panel="publicar">
+    <h4>Publicar y Biblioteca</h4>
+    <p class="hint">Tus clips de esta sesión, el título viral con sus hashtags y la publicación en tus redes con tus propias cuentas.</p>
+    <div class="panel-section"><span class="field-label">Biblioteca de esta sesión</span><div id="libraryList"><p class="hint" style="margin:0">Sin clips todavía: cuando añadas videos aparecerán aquí con sus botones.</p></div></div>
+    <div class="panel-section"><label class="field-label" for="topicInput">Tema del video</label><input class="txt-in" type="text" id="topicInput" placeholder="Ej.: datos curiosos de animales" maxlength="60" /></div>
+    <div class="panel-section"><label class="field-label" for="nicheSel">Nicho</label>
+      <select id="nicheSel" style="background:var(--panel3);border:1px solid var(--line3);color:var(--text);border-radius:10px;padding:9px 11px;width:100%;font-family:inherit">
+        <option value="curiosidades">Curiosidades</option><option value="gaming">Gaming</option><option value="humor">Humor</option><option value="musica">Música</option><option value="deportes">Deportes</option><option value="cocina">Cocina</option><option value="animales">Animales</option><option value="tecnologia">Tecnología</option><option value="finanzas">Finanzas</option><option value="belleza">Belleza</option>
+      </select></div>
+    <div class="panel-section"><button class="btn btn-primary" type="button" id="genTitleBtn" style="width:100%">Generar título viral + hashtags</button></div>
+    <div class="output-box" id="titleOut" aria-live="polite"></div>
+    <div class="panel-section" id="copyRow" hidden><div class="field-row"><button class="btn btn-ghost btn-sm" type="button" id="copyTitleBtn">Copiar título</button><button class="btn btn-ghost btn-sm" type="button" id="copyAllBtn">Copiar todo</button></div></div>
+    <div class="panel-section"><span class="field-label">Publicar en</span>
+      <div class="chips" id="netChips">
+        <button type="button" class="chip" data-net="YouTube Shorts">YouTube Shorts</button>
+        <button type="button" class="chip" data-net="TikTok">TikTok</button>
+        <button type="button" class="chip" data-net="Instagram Reels">Instagram Reels</button>
+        <button type="button" class="chip" data-net="Facebook Reels">Facebook Reels</button>
+        <button type="button" class="chip" data-net="X">X</button>
+      </div>
+      <p class="hint" style="margin-top:8px">Publicar usa los tokens de <b>tus propias cuentas</b>. Sin ellos, descarga el clip y súbelo con el título y los hashtags copiados.</p></div>
+    <div class="panel-section"><label class="field-label" for="tokYt">Token de YouTube (opcional)</label><input class="txt-in" type="password" id="tokYt" autocomplete="off" placeholder="Tu token, solo si lo tienes" /></div>
+    <div class="panel-section"><label class="field-label" for="tokTk">Token de TikTok (opcional)</label><input class="txt-in" type="password" id="tokTk" autocomplete="off" placeholder="Tu token, solo si lo tienes" /></div>
+    <div class="panel-section"><label class="field-label" for="tokFb">Token de Facebook (opcional)</label><input class="txt-in" type="password" id="tokFb" autocomplete="off" placeholder="Tu token, solo si lo tienes" /></div>
+    <div class="panel-section">
+      <span class="field-label">Exportar el clip pegado</span>
+      <div class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Incluye tu marca de agua, los subtítulos, el filtro, los efectos y las capas de sonido.</span></div>
+      <div class="check-line"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Se graba en tiempo real en tu equipo, en la calidad elegida, y se descarga el video final.</span></div>
+      <button class="btn btn-primary" type="button" id="exportBtn" style="width:100%;margin-top:6px">Exportar clip ahora</button>
+      <div class="progress" id="exportProgress" style="margin-top:12px"><i></i></div>
+      <p class="export-status" id="exportStatus" style="margin-top:10px"></p>
+    </div>
+  </div>
+</div>
+              </div>
+              <div class="stage">
+                <div class="stage-head"><span>● PANTALLA EN VIVO · CONTENEDOR 9:16</span><span class="live-st" id="stageStatus" style="color:var(--muted);font-weight:700">En espera</span>
+                  <label class="field-label" for="aspectSel" style="margin:0">Formato</label>
+                  <select id="aspectSel" aria-label="Formato del video" style="background:var(--panel3);border:1px solid var(--line3);color:var(--text);border-radius:9px;padding:6px 8px;font-family:inherit">
+                    <option value="9-16" selected>9:16 Vertical</option><option value="1-1">1:1 Cuadrado</option><option value="16-9">16:9 Horizontal</option>
+                  </select>
+                  <label class="field-label" for="qualitySel" style="margin:0">Calidad</label>
+                  <select id="qualitySel" aria-label="Calidad de exportación" style="background:var(--panel3);border:1px solid var(--line3);color:var(--text);border-radius:9px;padding:6px 8px;font-family:inherit">
+                    <option value="4K" selected>4K</option><option value="1080p">1080p</option><option value="720p">720p</option>
+                  </select>
+                  <button class="btn btn-primary btn-sm" type="button" id="exportBtnTop">Exportar clip</button>
+                </div>
+                <div class="preview-wrap r-9-16" id="previewWrap">
+                  <video id="preview" playsinline preload="metadata"></video>
+                  <div class="vignette" id="vignetteOverlay"></div>
+                  <div class="wm-overlay" id="wmOverlay"></div>
+                  <div class="sticker-overlay" id="stickerOverlay" hidden></div>
+                  <div class="caption-overlay cap-top" id="capTop"></div>
+                  <div class="caption-overlay cap-center" id="capCenter"></div>
+                  <div class="caption-overlay cap-bottom" id="capBottom"></div>
+                  <div class="fade-veil" id="fadeVeil"></div>
+                  <div class="cut-overlay" id="cutOverlay" hidden>⚡ CORTANDO CLIP EN 9:16…</div>
+                  <div class="preview-empty" id="previewEmpty">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9.5 5 2.5-5 2.5v-5Z"/></svg>
+                    <b>📺 Visor de Streaming y Videos En Vivo</b>
+                    <span>Pega un enlace de TikTok Live, YouTube Live, Kick o Twitch y pulsa «▶ Ver En Vivo y Cortar» para verlo aquí en pantalla mientras se corta en tiempo real.</span>
+                  </div>
+                  <div class="live-preview" id="livePreview" hidden>
+                    <iframe id="liveFrame" title="Vista en vivo del video del enlace" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    <span class="live-badge"><span class="live-dot" aria-hidden="true"></span>EN VIVO</span>
+                    <button class="live-close" type="button" id="liveCloseBtn">✕ Quitar vista en vivo</button>
+                    <p class="live-note">Estás viendo el video del enlace en vivo mientras tu servidor lo descarga en tu PC. Cuando la descarga termine, aquí aparece tu clip listo para cortarlo.</p>
+                  </div>
+                </div>
+                <button class="btn btn-primary btn-sm" type="button" id="manualClipBtn" hidden>✂ Clipear Manualmente Ahora (<span class="segEcho">15</span>s)</button>
+                <div class="transport">
+                  <button class="play-btn" type="button" id="playBtn" aria-label="Reproducir la secuencia de clips"><svg viewBox="0 0 24 24" id="playIcon"><path d="M7 4.3v15.4c0 .8.9 1.3 1.6.9l11.6-7.7c.6-.4.6-1.4 0-1.8L8.6 3.4C7.9 3 7 3.5 7 4.3Z"/></svg></button>
+                  <span class="time-read" id="timeRead">0:00 / 0:00</span>
+                  <span id="nowPlaying" style="color:var(--faint);font-size:.85rem;font-weight:600"></span>
+                </div>
+                <div>
+                  <div class="timeline" id="timeline"><span class="tl-empty">La línea de tiempo está vacía: añade tu primer clip.</span></div>
+                  <div class="timeline-meta" style="margin-top:8px"><span id="clipCountLabel">0 clips</span><span>Duración total: <b id="totalDurLabel">0:00</b></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="wrap">
+      <div class="sec-head"><h2>Preguntas frecuentes</h2></div>
+      <div class="faq">
+        <details><summary>¿Necesito pagar, registrarme o activar algo?</summary><p>No. Es gratis y sin límites: no hay planes, ni registro, ni códigos de activación, ni marca de agua obligatoria de la plataforma. La única marca es la tuya, y solo si quieres ponerla.</p></details>
+        <details><summary>¿Cómo se cortan los directos en vivo?</summary><p>Pega el enlace en «En Vivos / Streaming»: el video se ve en vivo en la pantalla 9:16 y la sesión va marcando un clip cada los segundos que elijas (o con el botón de corte manual). Cada corte guarda su segundo de inicio y fin; para bajarlo como archivo, el servidor de tu PC trabaja con videos ya grabados, así que un directo en curso se puede bajar cuando termina. La captura de pantalla sí graba en el momento, con tu permiso, usando la pantalla o pestaña que elijas.</p></details>
+        <details><summary>¿Cómo bajo un video con un enlace de YouTube o TikTok?</summary><p>En «Videos y Enlaces» pega el enlace, deja el tramo en 0–600 segundos (o el que quieras) y pulsa «Cargar video». Lo baja un servidor local que debe estar corriendo en tu PC (con yt-dlp); el navegador por sí solo no puede bajar videos de esas plataformas. No necesitas ningún código ni clave: con el servidor encendido, la carga va directa. Si no conecta, la propia página te dice si es el permiso de red local, el túnel o el permiso CORS, con los pasos para arreglarlo.</p></details>
+        <details><summary>¿Dónde se procesan mis videos?</summary><p>En tu propio equipo, dentro de tu navegador: recortar, pegar, poner la marca y exportar. Tus videos no se suben a servidores nuestros.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><span><b>Clips Limpieza · Estudio Personal de DJ Trucho Hd</b> — Editor gratis, música y más.</span><span>Sin códigos, sin límites ni esperas.</span></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+      "use strict";
+      const $ = (s, r) => (r || document).querySelector(s);
+      const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+
+      function fmt(sec){
+        sec = Math.max(0, Math.round(sec || 0));
+        const m = Math.floor(sec / 60), s = sec % 60;
+        return m + ":" + String(s).padStart(2, "0");
+      }
+      function fmtFull(sec){
+        sec = Math.max(0, sec || 0);
+        const m = Math.floor(sec / 60), s = sec % 60;
+        return m + ":" + s.toFixed(1).padStart(4, "0");
+      }
+      function escapeHtml(s){
+        return String(s).replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
+      }
+      let toastTimer = null;
+      function toast(msg){
+        const t = $("#toast");
+        t.textContent = msg;
+        t.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => t.classList.remove("show"), 3400);
+      }
+
+      /* ================= ESTADO ================= */
+      const state = {
+        clips: [],            // {id,name,src,duration,start,end,speed,volume,vw,vh}
+        selectedId: null,
+        playing: false,
+        quality: "1080p",
+        filter: "none",
+        adj: { bright: 100, contrast: 100, sat: 100 },
+        transition: "fade",
+        fx: { fadeIO: false, mirror: false, vignette: false },
+        wm: { on: true, type: "text", text: "@MiCanal", img: null, pos: "br", size: 100, opacity: 85, color: "#ffffff" },
+        texts: [],            // {id,text,start,end,pos,size,color}
+        layers: [],           // {soundId, vol}
+        generated: { title: "", tags: "" }
+      };
+      let clipSeq = 0, textSeq = 0;
+      let currentSeqPos = 0;
+
+      const preview = $("#preview");
+      const previewWrap = $("#previewWrap");
+      const fadeVeil = $("#fadeVeil");
+
+      function selectedClip(){ return state.clips.find(c => c.id === state.selectedId) || null; }
+      function clipLen(c){ return Math.max(0, c.end - c.start); }
+      function totalLen(){ return state.clips.reduce((a, c) => a + clipLen(c) / (c.speed || 1), 0); }
+      function seqOffsetOf(clip){
+        return state.clips.slice(0, state.clips.indexOf(clip)).reduce((a, x) => a + clipLen(x) / (x.speed || 1), 0);
+      }
+
+      /* ================= PESTAÑAS ================= */
+      function openTab(name){
+        $$(".tool-btn").forEach(b => {
+          const on = b.dataset.tab === name;
+          b.classList.toggle("active", on);
+          b.setAttribute("aria-selected", on ? "true" : "false");
+        });
+        $$(".tab-panel").forEach(p => { p.hidden = p.dataset.panel !== name; });
+      }
+      $$(".tool-btn").forEach(b => b.addEventListener("click", () => openTab(b.dataset.tab)));
+      function segToggle(id, attr, cb){
+        $$("#" + id + " button").forEach(b => b.addEventListener("click", () => {
+          $$("#" + id + " button").forEach(x => x.classList.remove("active"));
+          b.classList.add("active");
+          cb(b.dataset[attr]);
+        }));
+      }
+
+      /* ================= CLIPS (solo archivo) ================= */
+      function probeVideo(src){
+        return new Promise((resolve, reject) => {
+          const v = document.createElement("video");
+          v.preload = "metadata";
+          v.muted = true;
+          v.onloadedmetadata = () => resolve({ duration: v.duration || 0, vw: v.videoWidth || 1280, vh: v.videoHeight || 720 });
+          v.onerror = () => reject(new Error("No se pudo leer el video"));
+          v.src = src;
+        });
+      }
+      async function addClip(name, src){
+        try {
+          const meta = await probeVideo(src);
+          if (!isFinite(meta.duration) || meta.duration <= 0) throw new Error("duración no válida");
+          const clip = {
+            id: ++clipSeq, name, src,
+            duration: meta.duration, start: 0, end: meta.duration,
+            speed: 1, volume: 1, vw: meta.vw, vh: meta.vh
+          };
+          state.clips.push(clip);
+          if (!state.selectedId) state.selectedId = clip.id;
+          hideLivePreview();
+          renderClips(); renderTimeline(); updateStudioStatus();
+          if (state.selectedId === clip.id) loadIntoPreview(clip, false);
+          toast("Clip añadido: " + name);
+        } catch (e) {
+          toast("No se pudo cargar ese video. Prueba con un archivo .mp4 o .webm.");
+        }
+      }
+      $("#pickFilesBtn").addEventListener("click", () => $("#fileInput").click());
+      $("#fileInput").addEventListener("change", (e) => {
+        Array.from(e.target.files || []).forEach(f => addClip(f.name, URL.createObjectURL(f)));
+        e.target.value = "";
+      });
+
+      /* ================= CARGA POR ENLACE (servidor local en la PC) =================
+         La pestaña «Enlaces» es donde se pega el enlace. Protocolo del
+         servidor local (servidor-clips/server.mjs, puerto 4000), en su
+         versión sin clave: no pide ningún código, clave ni token, y esta
+         página no firma nada ni guarda ninguna credencial.
+         - Salud: GET /salud. Cualquier respuesta HTTP significa que está
+           ENCENDIDO; solo un fallo de red significa sin conexión.
+         - Cargar: POST /trabajo con el cuerpo JSON {url, ini, fin} (la
+           página manda también los alias enlace/link e i/f, por si el
+           servidor lee esos nombres) → {id}. El tramo dura como máximo
+           600 s.
+         - Estado: GET /estado?id=… → {estado, error} hasta que el
+           trabajo queda listo.
+         - Descargar: GET /archivo?id=… (el mp4).
+         Si el servidor responde 401/403 es que en la PC sigue corriendo
+         la versión vieja, la que exigía autorización: la página lo avisa
+         como rechazo de la carga y el arreglo es actualizar el servidor
+         en la PC a la versión sin clave.
+         Sirve para videos ya publicados y directos que ya terminaron.
+
+         Ojo: esta página es https y el servidor es http en la propia PC del
+         usuario. Los navegadores (Brave, Chrome) protegen la red local: si el
+         sitio no tiene el permiso de «red local», el fetch muere antes de
+         llegar al servidor aunque el servidor esté encendido, y antes se
+         mostraba «Servidor apagado» por error. Por eso la comprobación
+         combina: 1) fetch normal (cualquier respuesta HTTP = encendido),
+         2) la otra dirección local (localhost ↔ 127.0.0.1), 3) sonda
+         no-cors, que no puede leer la respuesta pero sí nota si el
+         servidor contestó. El servidor también se puede alcanzar por su
+         dirección pública de túnel (https://…trycloudflare.com): ahí el
+         permiso de red local no aplica. Todas las sondas corren EN
+         PARALELO, el tiempo va visible en pantalla y hay un botón para
+         detener la comprobación: la versión anterior las hacía una tras
+         otra con esperas de 10 s y dos rondas, hasta ~40 s de
+         «Comprobando…» que parecían un cuelgue. Con la dirección del
+         túnel las rondas son más largas (15 s + 10 s), porque la primera
+         conexión del túnel y el arranque de /salud en la PC pueden
+         pasar de los 6 s de la dirección local. Y una sonda fallida ya
+         NO cancela «Cargar video»: si la comprobación dice «sin
+         conexión» pero el servidor está encendido, la propia petición
+         de carga lo comprueba y sigue adelante; solo un bloqueo de
+         lectura probado (la sonda sin CORS contestó y la normal no)
+         detiene la carga antes de intentarla. Y si ya hay una
+         comprobación en curso, quien pida
+         otra espera a esa misma en vez de recibir el resultado viejo:
+         antes, pulsar «Comprobar otra vez» mientras la página terminaba
+         de probar la dirección anterior devolvía «sin conexión» sin
+         probar la nueva. */
+      /* ================= VISTA EN VIVO DEL ENLACE =================
+         Como en la otra página de clips: al pegar un enlace, el video se
+         ve EN VIVO en el escenario (el reproductor oficial incrustado de
+         YouTube o TikTok) desde el primer momento, también mientras el
+         servidor de la PC lo descarga. Cuando la descarga termina y el
+         clip entra en la vista previa del editor, la vista en vivo se
+         quita sola y queda el clip para cortarlo. El autoplay de los
+         navegadores solo arranca sin sonido: por eso el reproductor
+         empieza en silencio y el usuario le sube el volumen ahí mismo. */
+      const livePreviewBox = $("#livePreview");
+      /* El reproductor se monta exactamente como en la página original:
+         iframe a https://www.youtube.com/embed/{id}?autoplay=1&mute=0&playsinline=1&start=0&rel=0
+         en el dominio youtube.com, tal cual, y sin monitoreo de
+         errores. La descarga del
+         servidor no depende de esta vista: va por yt-dlp en la PC. */
+      let liveState = null;
+      function liveParse(url){
+        let m = String(url || "").match(/(?:youtube\.com\/(?:watch\?[^#]*\bv=|live\/|shorts\/|embed\/|v\/)|youtu\.be\/)([\w-]{6,})/i);
+        if (m) return { kind: "yt", id: m[1], watch: "https://www.youtube.com/watch?v=" + m[1] };
+        m = String(url || "").match(/tiktok\.com\/[^?#]*\/video\/(\d+)/i);
+        if (m) return { kind: "tiktok", id: m[1], watch: String(url) };
+        return null;
+      }
+      function ensureLiveFrame(){
+        let frame = document.getElementById("liveFrame");
+        if (!frame) {
+          frame = document.createElement("iframe");
+          frame.id = "liveFrame";
+          frame.title = "Vista en vivo del video del enlace";
+          frame.setAttribute("allow", "autoplay; encrypted-media; picture-in-picture; fullscreen");
+          frame.setAttribute("allowfullscreen", "");
+          frame.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+          livePreviewBox.insertBefore(frame, livePreviewBox.firstChild);
+        }
+        return frame;
+      }
+      function setLiveFrameSrc(){
+        if (!liveState) return;
+        const frame = ensureLiveFrame();
+        let src;
+        if (liveState.kind === "yt") {
+          src = "https://www.youtube.com/embed/" + liveState.id +
+            "?autoplay=1&mute=0&playsinline=1&start=0&rel=0";
+        } else {
+          src = "https://www.tiktok.com/embed/v2/" + liveState.id;
+        }
+        if (frame.getAttribute("src") !== src) frame.src = src;
+      }
+      function showLivePreview(url){
+        const info = liveParse(url);
+        if (!info) return false;
+        if (liveState && liveState.kind === info.kind && liveState.id === info.id &&
+            !livePreviewBox.hidden) return true;
+        liveState = { kind: info.kind, id: info.id, watch: info.watch };
+        setLiveFrameSrc();
+        livePreviewBox.hidden = false;
+        $("#nowPlaying").textContent = "En vivo: el video del enlace, mientras se descarga";
+        return true;
+      }
+      function hideLivePreview(){
+        liveState = null;
+        if (livePreviewBox.hidden) return;
+        livePreviewBox.hidden = true;
+        const frame = document.getElementById("liveFrame");
+        if (frame) {
+          frame.removeAttribute("src");
+          try { frame.src = "about:blank"; } catch (e) {}
+        }
+        if (!selectedClip()) $("#nowPlaying").textContent = "";
+      }
+      $("#liveCloseBtn").addEventListener("click", hideLivePreview);
+      let liveInputTimer = null;
+      $("#linkInput").addEventListener("input", (e) => {
+        clearTimeout(liveInputTimer);
+        const v = e.target.value.trim();
+        liveInputTimer = setTimeout(() => {
+          if (!v) { hideLivePreview(); return; }
+          showLivePreview(v);
+        }, 450);
+      });
+      const goEnlacesBtn = $("#goEnlacesBtn");
+      if (goEnlacesBtn) void 0;
+      const heroLinkBtn = $("#heroLinkBtn");
+      if (heroLinkBtn) void 0;
+      let serverOnline = false;
+      let serverBlocked = false;
+      let srvCheckPromise = null;
+      const SRV_ON_HTML = "<b>Servidor encendido.</b> Ya puedes cargar videos pegando su enlace.";
+      const SRV_BLOCKED_HTML = "<b>El servidor está encendido, pero tu navegador bloquea la conexión.</b> Sigue los pasos de abajo para permitirla.";
+      const SRV_OFF_HTML = "<b>Sin conexión con el servidor.</b> Puede estar apagado, o tu navegador puede estar bloqueando el acceso a tu red local. Revisa los pasos de abajo.";
+      const SRV_OFF_TUNNEL_HTML = "<b>Sin conexión con esa dirección pública.</b> El túnel puede estar cerrado, o la dirección puede haber cambiado la última vez que reiniciaste el servidor. Revisa los pasos de abajo.";
+      const SRV_CORS_HTML = "<b>El servidor contestó, pero no permite que esta página lea sus respuestas.</b> Le falta el permiso CORS en el servidor de tu PC. Revisa los pasos de abajo.";
+      function serverBase(){
+        let v = ($("#serverInput").value || "").trim().replace(/\/+$/, "");
+        if (!v) return "http://localhost:4000";
+        if (!/^https?:\/\//i.test(v)) {
+          v = (/^(localhost|127\.0\.0\.1|\[::1\])(:|\/|$)/i.test(v) ? "http://" : "https://") + v;
+        }
+        return v;
+      }
+      function isLocalBase(base){
+        try {
+          const h = new URL(base).hostname;
+          return h === "localhost" || h === "127.0.0.1" || h === "::1" || h === "[::1]";
+        } catch (e) { return true; }
+      }
+      function setSrvDiag(text){
+        const d = $("#srvDiag");
+        if (!d) return;
+        d.hidden = !text;
+        d.textContent = text || "";
+      }
+      function altBase(base){
+        try {
+          const u = new URL(base);
+          if (u.hostname === "localhost") u.hostname = "127.0.0.1";
+          else if (u.hostname === "127.0.0.1") u.hostname = "localhost";
+          else return null;
+          return u.toString().replace(/\/+$/, "");
+        } catch (e) { return null; }
+      }
+      function setServerStatus(state, html){
+        const el = $("#srvStatus");
+        el.classList.remove("on", "off", "blocked");
+        if (state) el.classList.add(state);
+        $("#srvStatusText").innerHTML = html;
+      }
+      function showSrvHelp(which){
+        $("#srvHelpLocal").hidden = which !== "local";
+        $("#srvHelpTunnel").hidden = which !== "tunnel";
+        $("#srvHelpCors").hidden = which !== "cors";
+      }
+      function fetchWithTimeout(url, opts, ms){
+        const ctrl = new AbortController();
+        const t = setTimeout(() => ctrl.abort(), ms || 4000);
+        return fetch(url, Object.assign({}, opts || {}, { signal: ctrl.signal }))
+          .finally(() => clearTimeout(t));
+      }
+      function sleepMs(ms){ return new Promise(res => setTimeout(res, ms)); }
+      function checkServer(){
+        if (srvCheckPromise) return srvCheckPromise;
+        srvCheckPromise = runServerCheck().finally(() => { srvCheckPromise = null; });
+        return srvCheckPromise;
+      }
+      /* Sondas de la comprobación: corren en paralelo y se pueden abortar
+         todas a la vez (botón «Detener comprobación»). srvCheckSeq invalida
+         el resultado de una comprobación cancelada o sustituida. */
+      let srvCheckSeq = 0;
+      const srvControllers = new Set();
+      let srvTicker = null;
+      function srvFetch(url, opts, ms){
+        const ctrl = new AbortController();
+        srvControllers.add(ctrl);
+        const t = setTimeout(() => { try { ctrl.abort(); } catch (e) {} }, ms || 6000);
+        return fetch(url, Object.assign({}, opts || {}, { signal: ctrl.signal }))
+          .finally(() => { clearTimeout(t); srvControllers.delete(ctrl); });
+      }
+      function stopSrvTicker(){ if (srvTicker) { clearInterval(srvTicker); srvTicker = null; } }
+      function setCheckingUI(on, startedAt){
+        const cancelBtn = $("#srvCancelBtn");
+        if (cancelBtn) cancelBtn.hidden = !on;
+        stopSrvTicker();
+        if (on) {
+          const tick = () => {
+            const s = Math.max(0, Math.round((Date.now() - startedAt) / 1000));
+            $("#srvStatusText").innerHTML = "Comprobando el servidor… (" + s + " s)";
+          };
+          tick();
+          srvTicker = setInterval(tick, 500);
+        }
+      }
+      function updateSrvOpenLink(){
+        const a = $("#srvOpenLink");
+        if (a) a.href = serverBase() + "/salud";
+      }
+      /* Una ronda de sondas en paralelo: gana la primera lectura completa
+         («read»); si ninguna lectura llega pero alguna sonda sin CORS
+         resuelve, el servidor contestó sin permiso de lectura («opaque»);
+         si todo falla o expira, null. La URL lleva un parámetro único
+         (?t=…) para que ni el navegador ni el borde del túnel puedan
+         servir una respuesta de error guardada de un intento anterior.
+         Una respuesta 502/503/530 del túnel significa «el túnel no llega
+         a tu PC», así que cuenta como sin respuesta, no como lectura. */
+      function probeRound(candidates, ms){
+        return new Promise((resolve) => {
+          let pending = 0, opaqueBase = null, done = false;
+          const bust = "?t=" + Date.now() + "-" + Math.floor(Math.random() * 1e9);
+          const finish = (val) => { if (!done) { done = true; resolve(val); } };
+          const step = () => { pending--; if (pending <= 0) finish(opaqueBase ? { kind: "opaque", base: opaqueBase } : null); };
+          candidates.forEach((b) => {
+            pending += 2;
+            srvFetch(b + "/salud" + bust, { cache: "no-store" }, ms).then(
+              (r) => {
+                if (r && (r.status === 502 || r.status === 503 || r.status === 530)) step();
+                else finish({ kind: "read", base: b });
+              },
+              () => step()
+            );
+            srvFetch(b + "/salud" + bust, { mode: "no-cors", cache: "no-store" }, ms).then(
+              () => { if (!opaqueBase) opaqueBase = b; step(); },
+              () => step()
+            );
+          });
+          if (!pending) finish(null);
+        });
+      }
+      async function runServerCheck(){
+        const mySeq = ++srvCheckSeq;
+        const base = serverBase();
+        const local = isLocalBase(base);
+        const candidates = [base];
+        const alt = altBase(base);
+        if (alt) candidates.push(alt);
+        updateSrvOpenLink();
+        setServerStatus("", "Comprobando el servidor…");
+        showSrvHelp("");
+        setSrvDiag("");
+        setCheckingUI(true, Date.now());
+        let result = null;
+        /* El túnel público tarda en despertar: su primera conexión puede
+           pasar de los 6 s, y /salud en la PC además arranca yt-dlp y
+           ffmpeg para contestar. Por eso la dirección pública recibe una
+           primera ronda larga (15 s) y una segunda de 10 s; la dirección
+           local mantiene las rondas cortas de siempre (6 s + 6 s). El
+           contador de segundos y el botón de detener siguen visibles
+           durante toda la comprobación. */
+        const firstMs = local ? 6000 : 15000;
+        const secondMs = local ? 6000 : 10000;
+        try {
+          result = await probeRound(candidates, firstMs);
+          if (mySeq !== srvCheckSeq) return false;
+          if (!result) {
+            setServerStatus("", "Sin respuesta todavía: un intento más…");
+            await sleepMs(700);
+            if (mySeq !== srvCheckSeq) return false;
+            result = await probeRound(candidates, secondMs);
+            if (mySeq !== srvCheckSeq) return false;
+          }
+        } finally {
+          if (mySeq === srvCheckSeq) setCheckingUI(false);
+        }
+        if (result && result.kind === "read") {
+          if (result.base !== base) $("#serverInput").value = result.base;
+          serverOnline = true;
+          serverBlocked = false;
+          setServerStatus("on", SRV_ON_HTML);
+          setSrvDiag("Comprobado: " + result.base + "/salud respondió.");
+          showSrvHelp("");
+          return true;
+        }
+        if (result && result.kind === "opaque") {
+          serverOnline = false;
+          serverBlocked = true;
+          setSrvDiag("Comprobado: " + result.base + "/salud contestó, pero sin permiso de lectura para esta página.");
+          if (local) {
+            setServerStatus("blocked", SRV_BLOCKED_HTML);
+            showSrvHelp("local");
+          } else {
+            setServerStatus("blocked", SRV_CORS_HTML);
+            showSrvHelp("cors");
+          }
+          return false;
+        }
+        serverOnline = false;
+        serverBlocked = false;
+        setSrvDiag("Comprobado sin respuesta: " + candidates.map(b => b + "/salud").join(" · "));
+        if (local) {
+          setServerStatus("off", SRV_OFF_HTML);
+          showSrvHelp("local");
+        } else {
+          setServerStatus("off", SRV_OFF_TUNNEL_HTML);
+          showSrvHelp("tunnel");
+        }
+        return false;
+      }
+      function cancelServerCheck(){
+        srvCheckSeq++;
+        srvControllers.forEach(c => { try { c.abort(); } catch (e) {} });
+        srvControllers.clear();
+        stopSrvTicker();
+        const cancelBtn = $("#srvCancelBtn");
+        if (cancelBtn) cancelBtn.hidden = true;
+        setServerStatus("", "<b>Comprobación detenida.</b> Pulsa «Comprobar otra vez» para intentarlo de nuevo.");
+        showSrvHelp("");
+      }
+      $("#serverInput").addEventListener("change", checkServer);
+      $("#serverInput").addEventListener("input", () => { serverOnline = false; updateSrvOpenLink(); });
+      $("#srvRetryBtn").addEventListener("click", checkServer);
+      const srvCancelBtn = $("#srvCancelBtn");
+      if (srvCancelBtn) srvCancelBtn.addEventListener("click", cancelServerCheck);
+      /* Al volver a la pestaña (por ejemplo, tras dar el permiso de red local
+         en los ajustes del navegador) se vuelve a comprobar solo. */
+      window.addEventListener("focus", () => { if (!serverOnline) checkServer(); });
+      /* La carga habla con el servidor local SIN ninguna clave: POST
+         directo a /trabajo con el enlace y el tramo en el cuerpo JSON
+         (ver el comentario de arriba). Sin firmas, sin códigos y sin
+         credenciales guardadas en la página. Si el servidor contesta
+         401/403 es la versión vieja (la que pedía autorización) y se
+         avisa como rechazo de la carga. Si el POST no recibe respuesta
+         HTTP (un parpadeo del túnel mientras la PC está ocupada), se
+         reintenta hasta 3 veces antes de darlo por sin respuesta: un
+         solo fallo de red ya no se convierte en «sin conexión». */
+      async function serverStartJob(url, ini, fin){
+        const body = JSON.stringify({
+          url: url, enlace: url, link: url,
+          ini: ini, desde: ini, i: ini,
+          fin: fin, hasta: fin, f: fin
+        });
+        for (let attempt = 0; attempt < 3; attempt++) {
+          if (attempt > 0) await sleepMs(attempt === 1 ? 1500 : 3000);
+          let r;
+          try {
+            r = await fetchWithTimeout(serverBase() + "/trabajo", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: body
+            }, 30000);
+          } catch (e) {
+            continue;
+          }
+          let data = null;
+          try { data = await r.json(); } catch (e) { data = null; }
+          if (r.status === 401 || r.status === 403) {
+            throw new Error("rechazado: tu servidor pide una autorización que esta página ya no usa. En tu PC sigue corriendo la versión vieja del servidor: actualízala a la versión sin clave y reiníciala.");
+          }
+          if (!r.ok) {
+            throw new Error("rechazado: " + ((data && (data.error || data.mensaje || data.message)) || ("HTTP " + r.status)));
+          }
+          return data || {};
+        }
+        throw new Error("sin respuesta del servidor");
+      }
+      $("#loadLinkBtn").addEventListener("click", async () => {
+        const url = $("#linkInput").value.trim();
+        if (!url) { toast("Pega primero el enlace del video."); $("#linkInput").focus(); return; }
+        if (!/^https?:\/\//i.test(url)) { toast("Ese enlace no parece válido: pégalo completo, empezando por https://"); return; }
+        showLivePreview(url);
+        let secIni = parseFloat($("#linkStart").value);
+        if (!isFinite(secIni) || secIni < 0) secIni = 0;
+        let secFin = parseFloat($("#linkEnd").value);
+        if (!isFinite(secFin) || secFin <= secIni) { toast("Revisa los segundos del tramo: el «hasta» tiene que ser mayor que el «desde»."); return; }
+        if (secFin - secIni > 600) secFin = secIni + 600;
+        const btn = $("#loadLinkBtn");
+        const original = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = "Cargando desde el enlace…";
+        /* ¿El servidor contestó ALGO durante ESTE intento? La clasificación
+           del error al final se apoya en esta variable del intento, no en
+           el indicador global: una comprobación en segundo plano (p. ej. al
+           volver a la pestaña) puede apagar ese indicador a mitad de una
+           descarga sana y antes eso convertía un corte bueno de la sesión
+           en vivo en un falso «Sin conexión». */
+        let attemptAnswered = false;
+        try {
+          if (!serverOnline) {
+            /* Se espera la comprobación con un tope amplio (la dirección
+               local ~14 s; el túnel hasta ~32 s, porque puede tardar en
+               despertar). Pero aunque la comprobación diga «sin conexión»,
+               la carga NO se cancela: la sonda GET /salud puede fallar por
+               lentitud del túnel o porque /salud tarda en arrancar en la
+               PC aunque el servidor esté encendido, así que la propia
+               petición de carga (POST /trabajo) hace de prueba definitiva.
+               Solo se cancela si la sonda probó que el servidor contestó
+               pero el navegador no puede leer sus respuestas (bloqueo de
+               lectura): en ese caso la carga tampoco podría leerse. */
+            const budget = isLocalBase(serverBase()) ? 14000 : 32000;
+            const checkRes = await Promise.race([
+              checkServer(),
+              sleepMs(budget).then(() => "timeout")
+            ]);
+            if (checkRes === true) attemptAnswered = true;
+            if (checkRes === false && serverBlocked) {
+              toast("Tu servidor está encendido, pero el navegador bloquea la conexión. Sigue los pasos de abajo para permitirla.");
+              return;
+            }
+            btn.textContent = checkRes === true
+              ? "Cargando desde el enlace…"
+              : "La comprobación no respondió: intentando cargar directamente…";
+          }
+          const data = await serverStartJob(url, Math.round(secIni), Math.round(secFin));
+          /* Si la carga directa contestó, el servidor SÍ está encendido,
+             aunque la sonda hubiera dicho que no. */
+          serverOnline = true;
+          serverBlocked = false;
+          attemptAnswered = true;
+          const jobId = data && (data.id != null ? data.id : (data.trabajo != null ? data.trabajo : data.jobId));
+          if (jobId == null || jobId === "") throw new Error("sin id de trabajo");
+          let title = (data && (data.titulo || data.title || data.nombre)) || "";
+          /* Esperar a que el servidor termine de bajar el video en la PC.
+             Un sondeo perdido (el túnel parpadea o la PC va cargada con la
+             propia descarga) NO cancela el trabajo: el video se sigue
+             bajando en la PC y se sigue preguntando. Solo tras varios
+             fallos seguidos se da por interrumpida, y aun así se avisa
+             como interrupción a mitad de descarga, no como «sin
+             conexión», porque el servidor ya había contestado. */
+          let ready = false;
+          let pollFails = 0;
+          const deadline = Date.now() + 12 * 60 * 1000;
+          while (Date.now() < deadline) {
+            await sleepMs(2000);
+            let sr = null;
+            try {
+              sr = await fetchWithTimeout(serverBase() + "/estado?id=" + encodeURIComponent(jobId), {}, 10000);
+            } catch (e) { sr = null; }
+            if (!sr) {
+              pollFails++;
+              if (pollFails >= 6) throw new Error("interrumpida: se perdió la conexión con el servidor mientras descargaba");
+              btn.textContent = "Descargando en tu PC… (reintentando la conexión)";
+              continue;
+            }
+            attemptAnswered = true;
+            let sd = null;
+            try { sd = await sr.json(); } catch (e) { sd = null; }
+            if (!sd) {
+              if (!sr.ok) {
+                pollFails++;
+                if (pollFails >= 6) throw new Error("interrumpida: se perdió la conexión con el servidor mientras descargaba");
+              }
+              continue;
+            }
+            pollFails = 0;
+            if (sd.titulo || sd.title || sd.nombre) title = sd.titulo || sd.title || sd.nombre;
+            if (sd.error) throw new Error("del servidor: " + sd.error);
+            const st = String(sd.estado || sd.status || sd.state || "").toLowerCase();
+            if (["error", "fallo", "fallido", "failed"].indexOf(st) >= 0) {
+              throw new Error("del servidor: " + (sd.mensaje || sd.message || "no pudo descargar ese video"));
+            }
+            if (sd.listo === true || sd.ready === true ||
+                ["listo", "terminado", "completo", "completado", "finalizado", "done", "ready", "ok"].indexOf(st) >= 0) {
+              ready = true;
+              break;
+            }
+            const prog = sd.progreso != null ? sd.progreso : sd.progress;
+            btn.textContent = (prog != null && isFinite(prog))
+              ? "Descargando en tu PC… " + Math.round(prog) + "%"
+              : "Descargando en tu PC…";
+          }
+          if (!ready) throw new Error("tiempo agotado esperando al servidor");
+          const fr = await fetchWithTimeout(serverBase() + "/archivo?id=" + encodeURIComponent(jobId), {}, 120000);
+          if (!fr.ok) throw new Error("no se pudo bajar el archivo del servidor");
+          const blob = await fr.blob();
+          await addClip(title || "Video desde enlace", URL.createObjectURL(blob));
+          /* Si la carga vino de un clip de la sesión en vivo, el enlace se
+             queda puesto: los demás clips de la lista se bajan del mismo
+             enlace, cada uno con sus segundos. */
+          if (btn.dataset.keepUrl !== "1") $("#linkInput").value = "";
+          setServerStatus("on", SRV_ON_HTML);
+        } catch (e) {
+          const msg = (e && e.message) || "";
+          if (msg.indexOf("rechazado:") === 0 || msg.indexOf("del servidor:") === 0) {
+            const detalle = msg.replace(/^(rechazado|del servidor):\s*/, "");
+            toast("El servidor no pudo cargar ese enlace: " + detalle);
+            setServerStatus("on", "<b>Servidor encendido,</b> pero no pudo cargar ese enlace: " + escapeHtml(detalle) + " Revisa que sea un video ya publicado (no un directo en curso), que el enlace esté completo y que el tramo de segundos esté dentro del video.");
+          } else if (attemptAnswered || msg.indexOf("interrumpida:") === 0) {
+            /* El servidor contestó durante este intento (la sonda, el POST
+               o algún sondeo de estado): está encendido. Lo que falló fue
+               la conexión a mitad de camino, así que se dice eso, con el
+               servidor marcado como encendido, y nunca «sin conexión». */
+            const detalle = msg.indexOf("interrumpida:") === 0 ? msg.replace(/^interrumpida:\s*/, "") : msg;
+            serverOnline = true;
+            serverBlocked = false;
+            setServerStatus("on", "<b>Servidor encendido.</b> La conexión se cortó durante la descarga" + (detalle ? " (" + escapeHtml(detalle) + ")" : "") + ". Pulsa «Cortar / Descargar» otra vez para reintentarlo.");
+            toast("El servidor sí está encendido, pero la conexión se cortó durante la descarga. Inténtalo otra vez.");
+          } else if (serverBlocked) {
+            if (isLocalBase(serverBase())) {
+              setServerStatus("blocked", SRV_BLOCKED_HTML);
+              showSrvHelp("local");
+            } else {
+              setServerStatus("blocked", SRV_CORS_HTML);
+              showSrvHelp("cors");
+            }
+            toast("Tu servidor está encendido, pero esta página no puede leer sus respuestas. Sigue los pasos de abajo.");
+          } else if (serverOnline) {
+            setServerStatus("off", "<b>El servidor no respondió al cargar el enlace.</b> Revisa que siga corriendo en tu PC y que el enlace sea válido.");
+            serverOnline = false;
+            toast("No se pudo cargar el video desde el enlace. Revisa el servidor de tu PC y el enlace.");
+          } else {
+            /* Ni la sonda ni la carga directa obtuvieron respuesta: ahora
+               sí es «sin conexión» de verdad. Se deja el aviso y la ayuda
+               que corresponden a la dirección usada (local o túnel). */
+            if (isLocalBase(serverBase())) {
+              setServerStatus("off", SRV_OFF_HTML);
+              showSrvHelp("local");
+            } else {
+              setServerStatus("off", SRV_OFF_TUNNEL_HTML);
+              showSrvHelp("tunnel");
+            }
+            setSrvDiag("Comprobado sin respuesta y la carga directa tampoco respondió: " + serverBase());
+            toast("Sin conexión con el servidor de tu PC: revisa que esté corriendo y sigue los pasos de abajo.");
+          }
+        } finally {
+          btn.disabled = false;
+          btn.textContent = original;
+          delete btn.dataset.keepUrl;
+        }
+      });
+      checkServer();
+
+      function renderClips(){
+        const list = $("#clipList");
+        list.innerHTML = "";
+        if (!state.clips.length) {
+          list.innerHTML = '<p class="hint">Todavía no hay clips. Sube el primero y aparecerá aquí con sus controles de recorte.</p>';
+          return;
+        }
+        state.clips.forEach((c, idx) => {
+          const el = document.createElement("div");
+          el.className = "clip-item" + (c.id === state.selectedId ? " active" : "");
+          el.innerHTML =
+            '<header>' +
+              '<div style="flex:1;min-width:0"><div class="clip-name">' + (idx + 1) + '. ' + escapeHtml(c.name) + '</div>' +
+              '<div class="clip-dur">Duración total ' + fmtFull(c.duration) + ' · corte ' + fmtFull(clipLen(c)) + '</div></div>' +
+              '<button class="icon-btn danger" type="button" data-act="del" aria-label="Quitar clip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2m3 0-1 13a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 7"/></svg></button>' +
+            '</header>' +
+            '<div class="trim-grid">' +
+              '<div><label>Inicio (seg)</label><input type="number" min="0" step="0.1" value="' + c.start.toFixed(1) + '" data-f="start"></div>' +
+              '<div><label>Fin (seg)</label><input type="number" min="0" step="0.1" value="' + c.end.toFixed(1) + '" data-f="end"></div>' +
+            '</div>' +
+            '<div class="trim-grid" style="margin-top:8px">' +
+              '<div><label>Velocidad</label><select data-f="speed">' +
+                [0.5, 0.75, 1, 1.25, 1.5, 2].map(v => '<option value="' + v + '"' + (c.speed === v ? " selected" : "") + '>' + v + 'x</option>').join("") +
+              '</select></div>' +
+              '<div><label>Volumen del clip</label><input type="range" min="0" max="100" value="' + Math.round(c.volume * 100) + '" data-f="volrange" style="margin-top:6px"></div>' +
+            '</div>' +
+            '<div class="clip-actions">' +
+              '<button class="mini-btn" type="button" data-act="use">Ver este clip</button>' +
+              '<button class="mini-btn" type="button" data-act="up">↑ Subir</button>' +
+              '<button class="mini-btn" type="button" data-act="down">↓ Bajar</button>' +
+              '<button class="mini-btn" type="button" data-act="full">Todo el clip</button>' +
+            '</div>';
+          el.addEventListener("click", (ev) => {
+            if (ev.target.closest("button, input, select, label")) return;
+            selectClip(c.id, false);
+          });
+          el.querySelector('[data-act="del"]').addEventListener("click", () => removeClip(c.id));
+          el.querySelector('[data-act="use"]').addEventListener("click", () => selectClip(c.id, false));
+          el.querySelector('[data-act="up"]').addEventListener("click", () => moveClip(c.id, -1));
+          el.querySelector('[data-act="down"]').addEventListener("click", () => moveClip(c.id, 1));
+          el.querySelector('[data-act="full"]').addEventListener("click", () => {
+            c.start = 0; c.end = c.duration; renderClips(); renderTimeline(); updateStudioStatus();
+            if (selectedClip() === c) loadIntoPreview(c, state.playing);
+          });
+          el.querySelector('[data-f="start"]').addEventListener("change", (ev) => {
+            let v = parseFloat(ev.target.value);
+            if (isNaN(v)) v = 0;
+            c.start = Math.min(Math.max(0, v), c.end - 0.2);
+            renderClips(); renderTimeline(); updateStudioStatus();
+            if (selectedClip() === c) loadIntoPreview(c, false);
+          });
+          el.querySelector('[data-f="end"]').addEventListener("change", (ev) => {
+            let v = parseFloat(ev.target.value);
+            if (isNaN(v)) v = c.duration;
+            c.end = Math.max(Math.min(c.duration, v), c.start + 0.2);
+            renderClips(); renderTimeline(); updateStudioStatus();
+          });
+          el.querySelector('[data-f="speed"]').addEventListener("change", (ev) => {
+            c.speed = parseFloat(ev.target.value) || 1;
+            if (selectedClip() === c) preview.playbackRate = c.speed;
+            renderTimeline(); updateStudioStatus();
+          });
+          el.querySelector('[data-f="volrange"]').addEventListener("input", (ev) => {
+            c.volume = (parseInt(ev.target.value, 10) || 0) / 100;
+            if (selectedClip() === c) preview.volume = c.volume;
+          });
+          list.appendChild(el);
+        });
+      }
+      function removeClip(id){
+        const i = state.clips.findIndex(c => c.id === id);
+        if (i < 0) return;
+        const [gone] = state.clips.splice(i, 1);
+        try { URL.revokeObjectURL(gone.src); } catch (e) {}
+        if (state.selectedId === id) {
+          state.selectedId = state.clips.length ? state.clips[0].id : null;
+          const c = selectedClip();
+          if (c) loadIntoPreview(c, false); else { preview.removeAttribute("src"); preview.load(); }
+        }
+        renderClips(); renderTimeline(); updateStudioStatus();
+      }
+      function moveClip(id, dir){
+        const i = state.clips.findIndex(c => c.id === id);
+        const j = i + dir;
+        if (i < 0 || j < 0 || j >= state.clips.length) return;
+        const tmp = state.clips[i]; state.clips[i] = state.clips[j]; state.clips[j] = tmp;
+        renderClips(); renderTimeline();
+      }
+      function selectClip(id, autoplay){
+        state.selectedId = id;
+        renderClips(); renderTimeline();
+        const c = selectedClip();
+        if (c) loadIntoPreview(c, autoplay);
+      }
+      function renderTimeline(){
+        const tl = $("#timeline");
+        tl.innerHTML = "";
+        if (!state.clips.length) {
+          tl.innerHTML = '<span class="tl-empty">La línea de tiempo está vacía: añade tu primer clip.</span>';
+        } else {
+          const total = Math.max(totalLen(), 0.1);
+          state.clips.forEach((c, idx) => {
+            const seg = document.createElement("button");
+            seg.type = "button";
+            seg.className = "seg" + (c.id === state.selectedId ? " active" : "");
+            seg.style.flex = Math.max(0.6, (clipLen(c) / (c.speed || 1)) / total * 10) + " 1 0";
+            seg.innerHTML = "<span>Clip " + (idx + 1) + "</span><small>" + fmt(clipLen(c) / (c.speed || 1)) + " · " + c.speed + "x</small>";
+            seg.title = c.name;
+            seg.addEventListener("click", () => selectClip(c.id, false));
+            tl.appendChild(seg);
+          });
+        }
+        $("#clipCountLabel").textContent = state.clips.length + (state.clips.length === 1 ? " clip" : " clips");
+        $("#totalDurLabel").textContent = fmt(totalLen());
+      }
+      function updateStudioStatus(){
+        const n = state.clips.length;
+        $("#studioStatus").textContent = n === 0
+          ? "Sin clips todavía"
+          : n + (n === 1 ? " clip" : " clips") + " · " + fmt(totalLen()) + " en total · listo para editar";
+        $("#previewEmpty").style.display = n === 0 ? "flex" : "none";
+      }
+
+      /* ================= REPRODUCCIÓN EN SECUENCIA ================= */
+      let loadedClipId = null;
+      function loadIntoPreview(clip, autoplay){
+        hideLivePreview();
+        const apply = () => {
+          preview.playbackRate = clip.speed || 1;
+          preview.volume = clip.volume;
+          try { preview.currentTime = clip.start; } catch (e) {}
+          currentSeqPos = seqOffsetOf(clip);
+          $("#nowPlaying").textContent = "Clip: " + clip.name;
+          if (autoplay) startPlayback();
+          updateTimeRead();
+          updateTextOverlays();
+        };
+        if (loadedClipId === clip.id && preview.src) { apply(); return; }
+        loadedClipId = clip.id;
+        preview.src = clip.src;
+        if (preview.readyState >= 1) apply();
+        else preview.addEventListener("loadedmetadata", apply, { once: true });
+      }
+      function startPlayback(){
+        const c = selectedClip();
+        if (!c) { toast("Añade al menos un clip para reproducir."); return; }
+        if (loadedClipId !== c.id) { loadIntoPreview(c, true); return; }
+        if (preview.currentTime < c.start || preview.currentTime >= c.end - 0.05) {
+          try { preview.currentTime = c.start; } catch (e) {}
+        }
+        preview.playbackRate = c.speed || 1;
+        preview.volume = c.volume;
+        state.playing = true;
+        setPlayIcon();
+        preview.play().catch(() => { state.playing = false; setPlayIcon(); });
+        startLayers();
+      }
+      function pausePlayback(){
+        state.playing = false;
+        preview.pause();
+        setPlayIcon();
+        stopLayers();
+      }
+      function setPlayIcon(){
+        $("#playIcon").innerHTML = state.playing
+          ? '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>'
+          : '<path d="M7 4.3v15.4c0 .8.9 1.3 1.6.9l11.6-7.7c.6-.4.6-1.4 0-1.8L8.6 3.4C7.9 3 7 3.5 7 4.3Z"/>';
+        $("#playBtn").setAttribute("aria-label", state.playing ? "Pausar" : "Reproducir la secuencia de clips");
+      }
+      $("#playBtn").addEventListener("click", () => { state.playing ? pausePlayback() : startPlayback(); });
+      preview.addEventListener("click", () => { state.playing ? pausePlayback() : startPlayback(); });
+      function advanceToNext(){
+        const idx = state.clips.findIndex(c => c.id === state.selectedId);
+        const next = state.clips[idx + 1];
+        if (!next) { pausePlayback(); return; }
+        const go = () => {
+          state.selectedId = next.id;
+          renderClips(); renderTimeline();
+          loadIntoPreview(next, true);
+        };
+        if (state.transition === "fade") {
+          fadeVeil.style.background = "#000";
+          fadeVeil.style.opacity = "1";
+          setTimeout(() => { go(); setTimeout(() => { fadeVeil.style.opacity = "0"; }, 90); }, 230);
+        } else if (state.transition === "flash") {
+          fadeVeil.style.background = "#fff";
+          fadeVeil.style.opacity = "0.9";
+          setTimeout(() => { go(); fadeVeil.style.opacity = "0"; }, 130);
+        } else {
+          go();
+        }
+      }
+      preview.addEventListener("timeupdate", () => {
+        const c = selectedClip();
+        updateTimeRead();
+        updateTextOverlays();
+        if (c && state.fx.fadeIO) {
+          const local = preview.currentTime - c.start, len = clipLen(c);
+          let a = 0;
+          if (local < 0.6) a = Math.max(a, 1 - local / 0.6);
+          if (len - local < 0.6) a = Math.max(a, 1 - (len - local) / 0.6);
+          fadeVeil.style.background = "#000";
+          fadeVeil.style.opacity = String(Math.min(1, Math.max(0, a)));
+        }
+        if (!c || !state.playing) return;
+        if (preview.currentTime >= c.end - 0.04) advanceToNext();
+      });
+      preview.addEventListener("ended", () => { if (state.playing) advanceToNext(); });
+      function updateTimeRead(){
+        const c = selectedClip();
+        if (!c) { $("#timeRead").textContent = "0:00 / 0:00"; currentSeqPos = 0; return; }
+        currentSeqPos = seqOffsetOf(c) + Math.max(0, Math.min(preview.currentTime - c.start, clipLen(c))) / (c.speed || 1);
+        $("#timeRead").textContent = fmt(currentSeqPos) + " / " + fmt(totalLen());
+      }
+
+      /* ================= FORMATO Y CALIDAD ================= */
+      $("#aspectSel").addEventListener("change", (e) => {
+        previewWrap.classList.remove("r-9-16", "r-1-1");
+        if (e.target.value !== "16-9") previewWrap.classList.add("r-" + e.target.value);
+      });
+      $("#qualitySel").addEventListener("change", (e) => { state.quality = e.target.value; });
+
+      /* ================= MARCA DE AGUA (5 posiciones) ================= */
+      const wmOverlay = $("#wmOverlay");
+      function wmPosStyle(pos){
+        const pad = "3.5%";
+        const s = {};
+        if (pos === "tl") { s.top = pad; s.left = pad; }
+        if (pos === "tr") { s.top = pad; s.right = pad; }
+        if (pos === "bl") { s.bottom = pad; s.left = pad; }
+        if (pos === "br") { s.bottom = pad; s.right = pad; }
+        if (pos === "cc") { s.top = "50%"; s.left = "50%"; s.transform = "translate(-50%,-50%)"; }
+        return s;
+      }
+      function renderWatermark(){
+        const wm = state.wm;
+        wmOverlay.innerHTML = "";
+        wmOverlay.style.cssText = "";
+        if (!wm.on) { wmOverlay.style.display = "none"; return; }
+        wmOverlay.style.display = "block";
+        Object.assign(wmOverlay.style, wmPosStyle(wm.pos));
+        wmOverlay.style.opacity = wm.opacity / 100;
+        if (wm.type === "image" && wm.img) {
+          wmOverlay.style.width = (wm.size * 0.22) + "%";
+          const img = document.createElement("img");
+          img.src = wm.img; img.alt = "";
+          wmOverlay.appendChild(img);
+        } else {
+          wmOverlay.style.width = "auto";
+          const span = document.createElement("span");
+          span.className = "wm-text";
+          span.style.color = wm.color || "#ffffff";
+          span.textContent = wm.text || "";
+          span.style.fontSize = "calc(clamp(13px, 2.6vw, 22px) * " + (wm.size / 100) + ")";
+          wmOverlay.appendChild(span);
+        }
+      }
+      segToggle("wmOnToggle", "wmOn", v => { state.wm.on = v === "1"; renderWatermark(); });
+      segToggle("wmTypeToggle", "wmType", v => {
+        state.wm.type = v;
+        $("#wmTextBox").hidden = v !== "text";
+        $("#wmImageBox").hidden = v !== "image";
+        renderWatermark();
+      });
+      $("#wmText").addEventListener("input", e => { state.wm.text = e.target.value; renderWatermark(); });
+      $("#pickLogoBtn").addEventListener("click", () => $("#logoInput").click());
+      $("#logoInput").addEventListener("change", e => {
+        const f = (e.target.files || [])[0];
+        if (!f) return;
+        if (state.wm.img) { try { URL.revokeObjectURL(state.wm.img); } catch (err) {} }
+        state.wm.img = URL.createObjectURL(f);
+        $("#logoName").textContent = "Logo cargado: " + f.name;
+        renderWatermark();
+        toast("Logo cargado. Mira la vista previa: ahí va tu marca.");
+        e.target.value = "";
+      });
+      $$("#wmPosGrid button").forEach(b => b.addEventListener("click", () => {
+        $$("#wmPosGrid button").forEach(x => x.classList.remove("active"));
+        b.classList.add("active");
+        state.wm.pos = b.dataset.pos;
+        renderWatermark();
+      }));
+      $("#wmSize").addEventListener("input", e => {
+        state.wm.size = parseInt(e.target.value, 10);
+        $("#wmSizeOut").textContent = state.wm.size + "%";
+        renderWatermark();
+      });
+      $("#wmOpacity").addEventListener("input", e => {
+        state.wm.opacity = parseInt(e.target.value, 10);
+        $("#wmOpacityOut").textContent = state.wm.opacity + "%";
+        renderWatermark();
+      });
+
+      /* ================= TEXTOS Y SUBTÍTULOS ================= */
+      function addTextItem(data){
+        const t = Object.assign({ id: ++textSeq, text: "", start: 0, end: 5, pos: "bottom", size: 40, color: "#ffffff" }, data || {});
+        state.texts.push(t);
+        return t;
+      }
+      function renderTexts(){
+        const list = $("#textList");
+        list.innerHTML = "";
+        if (!state.texts.length) {
+          list.innerHTML = '<p class="hint">Sin textos todavía. Añade el primero: un título que enganche o los subtítulos de lo que se dice.</p>';
+        }
+        state.texts.forEach((t, i) => {
+          const el = document.createElement("div");
+          el.className = "text-item";
+          el.innerHTML =
+            '<header><div class="clip-name">Texto ' + (i + 1) + '</div>' +
+            '<button class="icon-btn danger" type="button" data-act="del" aria-label="Quitar texto"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2m3 0-1 13a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 7"/></svg></button></header>' +
+            '<div class="field" style="margin-bottom:10px"><input class="txt-in" type="text" maxlength="90" placeholder="Escribe el texto…" value="' + escapeHtml(t.text) + '" data-f="text"></div>' +
+            '<div class="trim-grid">' +
+              '<div><label>Aparece (seg)</label><input type="number" min="0" step="0.5" value="' + t.start + '" data-f="start"></div>' +
+              '<div><label>Desaparece (seg)</label><input type="number" min="0" step="0.5" value="' + t.end + '" data-f="end"></div>' +
+            '</div>' +
+            '<div class="trim-grid" style="margin-top:8px">' +
+              '<div><label>Posición</label><select data-f="pos">' +
+                '<option value="top"' + (t.pos === "top" ? " selected" : "") + '>Arriba</option>' +
+                '<option value="center"' + (t.pos === "center" ? " selected" : "") + '>Centro</option>' +
+                '<option value="bottom"' + (t.pos === "bottom" ? " selected" : "") + '>Abajo</option>' +
+              '</select></div>' +
+              '<div><label>Color</label><input type="color" value="' + t.color + '" data-f="color" style="width:100%"></div>' +
+            '</div>' +
+            '<div style="margin-top:8px"><label style="font-size:.72rem;color:var(--faint);font-weight:700;display:block;margin-bottom:4px">Tamaño</label>' +
+            '<div class="range-line"><input type="range" min="18" max="72" value="' + t.size + '" data-f="size"><output>' + t.size + 'px</output></div></div>';
+          el.querySelector('[data-act="del"]').addEventListener("click", () => {
+            state.texts = state.texts.filter(x => x.id !== t.id);
+            renderTexts(); updateTextOverlays();
+          });
+          el.querySelector('[data-f="text"]').addEventListener("input", ev => { t.text = ev.target.value; updateTextOverlays(); });
+          el.querySelector('[data-f="start"]').addEventListener("change", ev => { t.start = Math.max(0, parseFloat(ev.target.value) || 0); updateTextOverlays(); });
+          el.querySelector('[data-f="end"]').addEventListener("change", ev => { t.end = Math.max(t.start + 0.5, parseFloat(ev.target.value) || t.start + 0.5); ev.target.value = t.end; updateTextOverlays(); });
+          el.querySelector('[data-f="pos"]').addEventListener("change", ev => { t.pos = ev.target.value; updateTextOverlays(); });
+          el.querySelector('[data-f="color"]').addEventListener("input", ev => { t.color = ev.target.value; updateTextOverlays(); });
+          el.querySelector('[data-f="size"]').addEventListener("input", ev => {
+            t.size = parseInt(ev.target.value, 10);
+            ev.target.closest(".range-line").querySelector("output").textContent = t.size + "px";
+            updateTextOverlays();
+          });
+          list.appendChild(el);
+        });
+      }
+      $("#addTextBtn").addEventListener("click", () => {
+        if (state.texts.length >= 5) { toast("Máximo 5 líneas de subtítulos."); return; }
+        const t = addTextItem({ start: Math.round(currentSeqPos), end: Math.round(currentSeqPos) + 5 });
+        if (t) { renderTexts(); updateTextOverlays(); }
+      });
+      const capEls = { top: $("#capTop"), center: $("#capCenter"), bottom: $("#capBottom") };
+      function activeTextsAt(time){
+        return state.texts.filter(t => t.text.trim() && time >= t.start && time <= t.end);
+      }
+      function updateTextOverlays(){
+        const active = activeTextsAt(currentSeqPos);
+        ["top", "center", "bottom"].forEach(pos => {
+          const items = active.filter(t => t.pos === pos);
+          const el = capEls[pos];
+          if (!items.length) { el.style.display = "none"; return; }
+          el.style.display = "block";
+          el.textContent = items.map(t => t.text).join("\n");
+          el.style.fontSize = items[0].size + "px";
+          el.style.color = items[0].color;
+        });
+      }
+
+      /* ================= EFECTOS ================= */
+      const FILTERS = {
+        none: "",
+        bn: "grayscale(1)",
+        calido: "sepia(0.28) saturate(1.25) brightness(1.04)",
+        frio: "saturate(1.05) hue-rotate(-12deg) brightness(1.03)",
+        vivido: "contrast(1.15) saturate(1.45)",
+        vintage: "contrast(1.22) saturate(0.85) brightness(0.95)",
+        contraste: "contrast(1.35) saturate(1.1)"
+      };
+      function filterString(){
+        const parts = [];
+        if (FILTERS[state.filter]) parts.push(FILTERS[state.filter]);
+        parts.push("brightness(" + state.adj.bright / 100 + ")");
+        parts.push("contrast(" + state.adj.contrast / 100 + ")");
+        parts.push("saturate(" + state.adj.sat / 100 + ")");
+        return parts.join(" ");
+      }
+      function applyFilter(){ preview.style.filter = filterString(); }
+      $$("#filterChips .chip").forEach(b => b.addEventListener("click", () => {
+        $$("#filterChips .chip").forEach(x => x.classList.remove("active"));
+        b.classList.add("active");
+        state.filter = b.dataset.filter;
+        applyFilter();
+      }));
+      [["adjBright", "bright", "adjBrightOut"], ["adjContrast", "contrast", "adjContrastOut"], ["adjSat", "sat", "adjSatOut"]].forEach(([id, key, out]) => {
+        $("#" + id).addEventListener("input", e => {
+          state.adj[key] = parseInt(e.target.value, 10);
+          $("#" + out).textContent = state.adj[key];
+          applyFilter();
+        });
+      });
+      $$("#transitionChips .chip").forEach(b => b.addEventListener("click", () => {
+        $$("#transitionChips .chip").forEach(x => x.classList.remove("active"));
+        b.classList.add("active");
+        state.transition = b.dataset.transition;
+      }));
+      $$("#fxChips .chip").forEach(b => b.addEventListener("click", () => {
+        const key = b.dataset.fx;
+        state.fx[key] = !state.fx[key];
+        b.classList.toggle("active", state.fx[key]);
+        applyFx();
+      }));
+      function applyFx(){
+        preview.style.transform = state.fx.mirror ? "scaleX(-1)" : "";
+        $("#vignetteOverlay").style.display = state.fx.vignette ? "block" : "none";
+        fadeVeil.style.transition = state.fx.fadeIO ? "none" : "";
+        if (!state.fx.fadeIO) fadeVeil.style.opacity = "0";
+      }
+      $("#resetFxBtn").addEventListener("click", () => {
+        state.filter = "none"; state.adj = { bright: 100, contrast: 100, sat: 100 };
+        state.fx = { fadeIO: false, mirror: false, vignette: false };
+        $("#adjBright").value = 100; $("#adjContrast").value = 100; $("#adjSat").value = 100;
+        $("#adjBrightOut").textContent = "100"; $("#adjContrastOut").textContent = "100"; $("#adjSatOut").textContent = "100";
+        $$("#filterChips .chip").forEach(x => x.classList.toggle("active", x.dataset.filter === "none"));
+        $$("#fxChips .chip").forEach(x => x.classList.remove("active"));
+        applyFilter(); applyFx();
+      });
+
+      /* ================= SONIDOS LIBRES DE COPYRIGHT (WebAudio) ================= */
+      let audioCtx = null, soundBus = null;
+      function ac(){
+        if (!audioCtx) {
+          const AC = window.AudioContext || window.webkitAudioContext;
+          audioCtx = new AC();
+          soundBus = audioCtx.createGain();
+          soundBus.gain.value = 1;
+          soundBus.connect(audioCtx.destination);
+        }
+        if (audioCtx.state === "suspended") audioCtx.resume();
+        return audioCtx;
+      }
+      function tone(freqA, freqB, dur, type, vol, delay){
+        const ctx = ac(), t0 = ctx.currentTime + (delay || 0);
+        const o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = type || "sine";
+        o.frequency.setValueAtTime(freqA, t0);
+        o.frequency.exponentialRampToValueAtTime(Math.max(30, freqB), t0 + dur);
+        g.gain.setValueAtTime(0.0001, t0);
+        g.gain.exponentialRampToValueAtTime(vol, t0 + 0.012);
+        g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+        o.connect(g); g.connect(soundBus);
+        o.start(t0); o.stop(t0 + dur + 0.05);
+      }
+      function noiseSnd(dur, filterFreq, type, vol, delay, sweepTo){
+        const ctx = ac(), t0 = ctx.currentTime + (delay || 0);
+        const len = Math.max(1, Math.floor(ctx.sampleRate * dur));
+        const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+        const data = buf.getChannelData(0);
+        for (let i = 0; i < len; i++) data[i] = Math.random() * 2 - 1;
+        const src = ctx.createBufferSource(); src.buffer = buf;
+        const f = ctx.createBiquadFilter(); f.type = type || "bandpass"; f.frequency.setValueAtTime(filterFreq, t0);
+        if (sweepTo) f.frequency.exponentialRampToValueAtTime(sweepTo, t0 + dur);
+        const g = ctx.createGain();
+        g.gain.setValueAtTime(0.0001, t0);
+        g.gain.exponentialRampToValueAtTime(vol, t0 + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+        src.connect(f); f.connect(g); g.connect(soundBus);
+        src.start(t0); src.stop(t0 + dur + 0.05);
+      }
+      const SOUNDS = [
+        { id: "whoosh", group: "fx", name: "Whoosh", desc: "Barrido de aire para transiciones rápidas.", play(v){ noiseSnd(0.4, 500, "bandpass", 0.5 * v, 0, 2600); } },
+        { id: "pop", group: "fx", name: "Pop", desc: "El toque clásico para cortes y textos.", play(v){ tone(620, 140, 0.13, "sine", 0.55 * v); } },
+        { id: "ding", group: "fx", name: "Ding", desc: "Campana suave, perfecta para listas y datos.", play(v){ tone(1175, 1170, 0.5, "triangle", 0.4 * v); tone(1568, 1560, 0.4, "sine", 0.2 * v, 0.02); } },
+        { id: "impacto", group: "fx", name: "Impacto grave", desc: "Golpe profundo para revelar el dato fuerte.", play(v){ tone(110, 30, 0.5, "sine", 0.85 * v); noiseSnd(0.18, 260, "lowpass", 0.45 * v); } },
+        { id: "subida", group: "fx", name: "Subida de tensión", desc: "El sonido sube hasta el momento clave.", play(v){ tone(160, 1400, 1, "sawtooth", 0.15 * v); noiseSnd(1, 700, "bandpass", 0.12 * v, 0, 3200); } },
+        { id: "laser", group: "fx", name: "Láser", desc: "Disparo futurista para gaming y tecnología.", play(v){ tone(1500, 110, 0.22, "square", 0.22 * v); tone(1500, 110, 0.22, "square", 0.18 * v, 0.26); } },
+        { id: "notificacion", group: "fx", name: "Notificación", desc: "Doble aviso corto, como el de tu celular.", play(v){ tone(880, 880, 0.11, "sine", 0.32 * v); tone(1174, 1174, 0.2, "sine", 0.32 * v, 0.13); } },
+        { id: "ritmo", group: "music", name: "Ritmo suave", desc: "Acordes tranquilos para fondos y tutoriales.", dur: 4.8,
+          play(v){
+            const chords = [[220, 261.6, 329.6], [174.6, 220, 261.6], [196, 246.9, 293.7], [164.8, 196, 246.9]];
+            chords.forEach((ch, ci) => ch.forEach((f, ni) => tone(f, f, 1.1, "triangle", 0.10 * v, ci * 1.2 + ni * 0.14)));
+          } },
+        { id: "tension", group: "music", name: "Tensión", desc: "Pulsos graves para misterio y suspenso.", dur: 6,
+          play(v){
+            for (let i = 0; i < 8; i++) {
+              tone(55, 55, 0.55, "sine", 0.5 * v, i * 0.75);
+              tone(i % 2 ? 82.4 : 73.4, i % 2 ? 82.4 : 73.4, 0.4, "triangle", 0.16 * v, i * 0.75 + 0.05);
+            }
+          } },
+        { id: "alegre", group: "music", name: "Alegre", desc: "Melodía optimista para contenido positivo.", dur: 4,
+          play(v){
+            const seq = [523.3, 659.3, 784, 1046.5, 784, 659.3, 587.3, 659.3];
+            seq.forEach((f, i) => tone(f, f, 0.24, "square", 0.10 * v, i * 0.25));
+            [130.8, 196, 146.8, 196].forEach((f, i) => tone(f, f, 0.5, "triangle", 0.18 * v, i * 1));
+          } }
+      ];
+      function soundById(id){ return SOUNDS.find(x => x.id === id); }
+      function buildSoundCards(){
+        const fxGrid = $("#fxSoundGrid"), muGrid = $("#musicSoundGrid");
+        SOUNDS.forEach(s => {
+          const card = document.createElement("div");
+          card.className = "sound-card";
+          card.dataset.sound = s.id;
+          card.innerHTML =
+            '<span class="s-top"><span class="s-name">' + s.name + '</span>' +
+            '<button type="button" class="s-play" aria-label="Escuchar ' + s.name + '"><svg viewBox="0 0 24 24"><path d="M7 4.3v15.4c0 .8.9 1.3 1.6.9l11.6-7.7c.6-.4.6-1.4 0-1.8L8.6 3.4C7.9 3 7 3.5 7 4.3Z"/></svg></button></span>' +
+            '<span class="s-desc">' + s.desc + '</span>' +
+            '<span class="s-foot"><span class="s-tag">Sin copyright</span>' +
+            '<button type="button" class="s-add">+ Capa</button></span>';
+          card.querySelector(".s-play").addEventListener("click", () => { try { s.play(0.9); } catch (e) {} });
+          card.querySelector(".s-add").addEventListener("click", () => addLayer(s.id));
+          (s.group === "music" ? muGrid : fxGrid).appendChild(card);
+        });
+      }
+      function addLayer(id){
+        if (state.layers.length >= 4) { toast("Máximo 4 capas de sonido."); return; }
+        if (state.layers.some(l => l.soundId === id)) { toast("Ese sonido ya está en tus capas."); return; }
+        const s = soundById(id);
+        state.layers.push({ soundId: id, vol: s.group === "music" ? 0.5 : 0.85 });
+        renderLayers();
+        toast("Capa añadida: " + s.name + ". Sonará con tu video.");
+      }
+      function renderLayers(){
+        const list = $("#layerList");
+        list.innerHTML = "";
+        if (!state.layers.length) {
+          list.innerHTML = '<p class="hint">Sin capas todavía. Añade un efecto o una música de fondo y se mezclará con el audio original de tus clips.</p>';
+        }
+        state.layers.forEach(l => {
+          const s = soundById(l.soundId);
+          const el = document.createElement("div");
+          el.className = "layer-item";
+          el.innerHTML =
+            '<header><div class="clip-name">' + s.name + (s.group === "music" ? ' · música en bucle' : ' · efecto') + '</div>' +
+            '<button class="icon-btn danger" type="button" aria-label="Quitar capa"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2m3 0-1 13a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 7"/></svg></button></header>' +
+            '<label style="font-size:.72rem;color:var(--faint);font-weight:700;display:block;margin-bottom:4px">Volumen de la capa</label>' +
+            '<div class="range-line"><input type="range" min="5" max="100" value="' + Math.round(l.vol * 100) + '"><output>' + Math.round(l.vol * 100) + '%</output></div>';
+          el.querySelector(".icon-btn").addEventListener("click", () => {
+            state.layers = state.layers.filter(x => x !== l);
+            renderLayers();
+          });
+          el.querySelector('input[type="range"]').addEventListener("input", ev => {
+            l.vol = parseInt(ev.target.value, 10) / 100;
+            ev.target.closest(".range-line").querySelector("output").textContent = ev.target.value + "%";
+          });
+          list.appendChild(el);
+        });
+        $$(".sound-card").forEach(c => c.classList.toggle("in-layer", state.layers.some(l => l.soundId === c.dataset.sound)));
+      }
+      let layerTimers = [], layersRunning = false;
+      function startLayers(){
+        if (layersRunning || !state.layers.length) return;
+        layersRunning = true;
+        state.layers.forEach(l => {
+          const s = soundById(l.soundId);
+          if (!s) return;
+          try { s.play(l.vol); } catch (e) {}
+          if (s.group === "music" && s.dur) {
+            layerTimers.push(setInterval(() => { try { s.play(l.vol); } catch (e) {} }, s.dur * 1000));
+          }
+        });
+      }
+      function stopLayers(){
+        layersRunning = false;
+        layerTimers.forEach(t => clearInterval(t));
+        layerTimers = [];
+      }
+
+      /* ================= TÍTULO VIRAL + HASHTAGS ================= */
+      const NICHES = {
+        curiosidades: { tags: ["#datoscuriosos", "#curiosidades", "#sabiasque", "#aprendiendo", "#fyp"], hooks: ["Lo que nadie te contó sobre", "El dato que cambia todo sobre"] },
+        gaming: { tags: ["#gaming", "#gamer", "#videojuegos", "#fyp", "#parati"], hooks: ["El truco que todo gamer debe saber de", "Nadie usa esto en"] },
+        humor: { tags: ["#humor", "#comedia", "#risas", "#fyp", "#viral"], hooks: ["No vas a parar de reír con", "Esto pasa siempre con"] },
+        musica: { tags: ["#musica", "#music", "#fyp", "#parati", "#viral"], hooks: ["El sonido que todos están usando:", "Escucha esto sobre"] },
+        deportes: { tags: ["#deportes", "#futbol", "#sports", "#fyp", "#viral"], hooks: ["El momento que nadie vio en", "Lo que pasó en"] },
+        cocina: { tags: ["#cocina", "#recetas", "#comida", "#fyp", "#foodtok"], hooks: ["La receta que está rompiendo internet:", "El secreto de cocina de"] },
+        animales: { tags: ["#animales", "#mascotas", "#naturaleza", "#fyp", "#sabiasque"], hooks: ["Lo que no sabías de", "El comportamiento increíble de"] },
+        tecnologia: { tags: ["#tecnologia", "#ia", "#trucos", "#fyp", "#android", "#iphone"], hooks: ["El truco de tecnología que necesitas:", "Nadie te enseñó esto de"] },
+        finanzas: { tags: ["#finanzas", "#dinero", "#emprender", "#fyp", "#negocios"], hooks: ["El error de dinero que todos cometen con", "Lo que los ricos saben de"] },
+        belleza: { tags: ["#belleza", "#makeup", "#skincare", "#fyp", "#beautytok"], hooks: ["El truco de belleza que funciona:", "Deja de hacer esto con"] }
+      };
+      const TITLE_TEMPLATES = [
+        "{hook} {tema} 😱 ¡El #3 te sorprenderá!",
+        "{tema}: lo que nadie te había contado 🔥",
+        "¡No vas a creer esto de {tema}! 😱",
+        "{hook} {tema} (mira hasta el final)",
+        "5 cosas de {tema} que no sabías 🤯",
+        "{tema} como nunca lo habías visto 👀"
+      ];
+      function generateTitle(){
+        const temaRaw = $("#topicInput").value.trim();
+        const tema = temaRaw || "este tema";
+        const niche = NICHES[$("#nicheSel").value] || NICHES.curiosidades;
+        const hook = niche.hooks[Math.floor(Math.random() * niche.hooks.length)];
+        const tpl = TITLE_TEMPLATES[Math.floor(Math.random() * TITLE_TEMPLATES.length)];
+        const title = tpl.replace("{hook}", hook).replace("{tema}", tema);
+        const extra = temaRaw ? "#" + temaRaw.toLowerCase().replace(/[^a-záéíóúñü0-9]+/gi, "").slice(0, 24) : "";
+        const tags = niche.tags.concat(["#shorts", "#reels"]).concat(extra ? [extra] : []).join(" ");
+        state.generated = { title, tags };
+        $("#titleOut").innerHTML = "<b>" + escapeHtml(title) + '</b><br><span class="tags">' + escapeHtml(tags) + "</span>";
+        $("#copyRow").hidden = false;
+        toast("Título y hashtags generados. Cópialos y pégalos al publicar.");
+      }
+      $("#genTitleBtn").addEventListener("click", generateTitle);
+      function copyText(txt, okMsg){
+        const done = () => toast(okMsg);
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done).catch(() => fallbackCopy(txt, done));
+        } else fallbackCopy(txt, done);
+      }
+      function fallbackCopy(txt, done){
+        const ta = document.createElement("textarea");
+        ta.value = txt; ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand("copy"); done(); } catch (e) { toast("No se pudo copiar automáticamente."); }
+        ta.remove();
+      }
+      $("#copyTitleBtn").addEventListener("click", () => { if (state.generated.title) copyText(state.generated.title, "Título copiado."); });
+      $("#copyAllBtn").addEventListener("click", () => {
+        if (state.generated.title) copyText(state.generated.title + "\n\n" + state.generated.tags, "Título y hashtags copiados.");
+      });
+
+      /* ================= EXPORTAR ================= */
+      let exporting = false;
+      let exportAudio = null;
+      let exportClip = null, exportBase = 0;
+      function setExportStatus(msg, pct){
+        $("#exportStatus").textContent = msg || "";
+        const bar = $("#exportProgress");
+        if (typeof pct === "number") {
+          bar.style.display = "block";
+          bar.querySelector("i").style.width = Math.min(100, Math.round(pct)) + "%";
+        } else if (pct === null) {
+          bar.style.display = "none";
+          bar.querySelector("i").style.width = "0";
+        }
+      }
+      function ensureExportAudio(){
+        if (exportAudio) return exportAudio;
+        const ctx = ac();
+        const source = ctx.createMediaElementSource(preview);
+        const gain = ctx.createGain();
+        const dest = ctx.createMediaStreamDestination();
+        source.connect(gain); gain.connect(dest); gain.connect(ctx.destination);
+        if (soundBus) soundBus.connect(dest);
+        exportAudio = { ctx, source, gain, dest };
+        return exportAudio;
+      }
+      const wmCanvasImg = new Image();
+      function drawWatermarkCanvas(ctx, W, H){
+        const wm = state.wm;
+        if (!wm.on) return;
+        ctx.save();
+        ctx.globalAlpha = wm.opacity / 100;
+        const padX = W * 0.035, padY = H * 0.035;
+        if (wm.type === "image" && wm.img && wmCanvasImg.complete && wmCanvasImg.naturalWidth) {
+          const w = W * 0.22 * (wm.size / 100);
+          const h = w * (wmCanvasImg.naturalHeight / wmCanvasImg.naturalWidth);
+          let x = padX, y = padY;
+          if (wm.pos === "tr" || wm.pos === "br") x = W - w - padX;
+          if (wm.pos === "cc") { x = (W - w) / 2; y = (H - h) / 2; }
+          if (wm.pos === "bl" || wm.pos === "br") y = H - h - padY;
+          ctx.drawImage(wmCanvasImg, x, y, w, h);
+        } else if (wm.text) {
+          const fs = Math.max(14, W * 0.028) * (wm.size / 100);
+          ctx.font = "900 " + fs + "px Archivo, sans-serif";
+          ctx.fillStyle = wm.color || "#ffffff";
+          ctx.shadowColor = "rgba(0,0,0,.65)"; ctx.shadowBlur = fs * 0.35; ctx.shadowOffsetY = 2;
+          const tw = ctx.measureText(wm.text).width;
+          let x = padX, y = padY + fs;
+          if (wm.pos === "tr" || wm.pos === "br") x = W - tw - padX;
+          if (wm.pos === "cc") { x = (W - tw) / 2; y = H / 2; }
+          if (wm.pos === "bl" || wm.pos === "br") y = H - padY;
+          ctx.fillText(wm.text, x, y);
+        }
+        ctx.restore();
+      }
+      let vignetteGrad = null, vignetteKey = "";
+      function drawTextCanvas(ctx, W, H, time){
+        activeTextsAt(time).forEach(t => {
+          ctx.save();
+          const fs = t.size * (W / 960);
+          ctx.font = "800 " + fs + "px Archivo, sans-serif";
+          ctx.textAlign = "center";
+          ctx.shadowColor = "rgba(0,0,0,.9)"; ctx.shadowBlur = 6; ctx.lineWidth = fs * 0.14;
+          ctx.strokeStyle = "rgba(0,0,0,.55)";
+          const words = t.text.split(/\s+/);
+          const lines = []; let line = "";
+          words.forEach(w => {
+            const test = line ? line + " " + w : w;
+            if (ctx.measureText(test).width > W * 0.9 && line) { lines.push(line); line = w; }
+            else line = test;
+          });
+          if (line) lines.push(line);
+          const lh = fs * 1.25;
+          let y0;
+          if (t.pos === "top") y0 = H * 0.06 + fs;
+          else if (t.pos === "center") y0 = H / 2 - (lines.length - 1) * lh / 2;
+          else y0 = H * 0.93 - (lines.length - 1) * lh;
+          ctx.fillStyle = t.color;
+          lines.forEach((ln, i) => { ctx.strokeText(ln, W / 2, y0 + i * lh); ctx.fillText(ln, W / 2, y0 + i * lh); });
+          ctx.restore();
+        });
+      }
+      function playSegment(clip){
+        return new Promise((resolve) => {
+          const onMeta = () => {
+            preview.playbackRate = clip.speed || 1;
+            if (exportAudio) exportAudio.gain.gain.value = clip.volume;
+            preview.volume = 1;
+            try { preview.currentTime = clip.start; } catch (e) {}
+            const check = () => {
+              if (preview.currentTime >= clip.end - 0.03 || preview.ended) {
+                preview.pause();
+                preview.removeEventListener("timeupdate", check);
+                resolve();
+              }
+            };
+            preview.addEventListener("timeupdate", check);
+            preview.play().catch(() => { preview.removeEventListener("timeupdate", check); resolve(); });
+          };
+          if (loadedClipId === clip.id && preview.readyState >= 1) onMeta();
+          else {
+            loadedClipId = clip.id;
+            preview.src = clip.src;
+            preview.addEventListener("loadedmetadata", onMeta, { once: true });
+          }
+        });
+      }
+      async function exportVideo(){
+        if (exporting) return;
+        if (!state.clips.length) { toast("Añade al menos un clip antes de exportar."); return; }
+        exporting = true;
+        pausePlayback();
+        $("#exportBtn").disabled = true; $("#exportBtnTop").disabled = true;
+        try {
+          if (state.wm.type === "image" && state.wm.img) wmCanvasImg.src = state.wm.img;
+          const first = state.clips[0];
+          const maxH = state.quality === "720p" ? 720 : (state.quality === "1080p" ? 1080 : 2160);
+          let srcW = first.vw || 1280, srcH = first.vh || 720;
+          const sc = Math.min(1, maxH / srcH, 1920 / srcW);
+          const W = Math.max(2, Math.round(srcW * sc / 2) * 2), H = Math.max(2, Math.round(srcH * sc / 2) * 2);
+          const canvas = document.createElement("canvas");
+          canvas.width = W; canvas.height = H;
+          const ctx = canvas.getContext("2d");
+          const audio = ensureExportAudio();
+          let stream;
+          try { stream = canvas.captureStream(30); }
+          catch (e) { throw new Error("Este navegador no permite grabar el lienzo de video."); }
+          const combined = new MediaStream();
+          stream.getVideoTracks().forEach(t => combined.addTrack(t));
+          audio.dest.stream.getAudioTracks().forEach(t => combined.addTrack(t));
+          let mime = "";
+          ["video/webm;codecs=vp9,opus", "video/webm;codecs=vp8,opus", "video/webm", "video/mp4"].forEach(m => {
+            if (!mime && window.MediaRecorder && MediaRecorder.isTypeSupported(m)) mime = m;
+          });
+          if (!window.MediaRecorder) throw new Error("Este navegador no trae grabador de video (MediaRecorder).");
+          const rec = new MediaRecorder(combined, mime ? { mimeType: mime, videoBitsPerSecond: 8000000 } : { videoBitsPerSecond: 8000000 });
+          const chunks = [];
+          rec.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
+          const stopped = new Promise(r => { rec.onstop = r; });
+          let rafId = null;
+          const drawLoop = () => {
+            ctx.fillStyle = "#000"; ctx.fillRect(0, 0, W, H);
+            if (preview.readyState >= 2) {
+              try {
+                ctx.filter = filterString();
+                ctx.save();
+                if (state.fx.mirror) { ctx.translate(W, 0); ctx.scale(-1, 1); }
+                ctx.drawImage(preview, 0, 0, W, H);
+                ctx.restore();
+                ctx.filter = "none";
+              } catch (e) { /* fotograma no disponible */ }
+            }
+            if (state.fx.vignette) {
+              const key = W + "x" + H;
+              if (vignetteKey !== key) {
+                vignetteKey = key;
+                vignetteGrad = ctx.createRadialGradient(W / 2, H / 2, Math.min(W, H) * 0.36, W / 2, H / 2, Math.max(W, H) * 0.72);
+                vignetteGrad.addColorStop(0, "rgba(0,0,0,0)");
+                vignetteGrad.addColorStop(1, "rgba(0,0,0,0.55)");
+              }
+              ctx.fillStyle = vignetteGrad;
+              ctx.fillRect(0, 0, W, H);
+            }
+            drawWatermarkCanvas(ctx, W, H);
+            if (exportClip) {
+              const local = Math.max(0, preview.currentTime - exportClip.start);
+              const elapsed = exportBase + local / (exportClip.speed || 1);
+              drawTextCanvas(ctx, W, H, elapsed);
+              if (state.fx.fadeIO) {
+                const len = clipLen(exportClip);
+                let a = 0;
+                const localReal = local / (exportClip.speed || 1), lenReal = len / (exportClip.speed || 1);
+                if (localReal < 0.6) a = Math.max(a, 1 - localReal / 0.6);
+                if (lenReal - localReal < 0.6) a = Math.max(a, 1 - (lenReal - localReal) / 0.6);
+                if (a > 0) { ctx.fillStyle = "rgba(0,0,0," + Math.min(1, a).toFixed(3) + ")"; ctx.fillRect(0, 0, W, H); }
+              }
+            }
+            rafId = requestAnimationFrame(drawLoop);
+          };
+          rec.start(250);
+          drawLoop();
+          startLayers();
+          const total = totalLen();
+          let doneLen = 0;
+          for (let i = 0; i < state.clips.length; i++) {
+            const c = state.clips[i];
+            exportClip = c; exportBase = doneLen;
+            setExportStatus("Exportando clip " + (i + 1) + " de " + state.clips.length + "… (se graba en tiempo real)", total ? (doneLen / total) * 100 : 0);
+            state.selectedId = c.id; renderClips(); renderTimeline();
+            await playSegment(c);
+            doneLen += clipLen(c) / (c.speed || 1);
+          }
+          exportClip = null;
+          stopLayers();
+          if (rafId) cancelAnimationFrame(rafId);
+          rec.stop();
+          await stopped;
+          const blob = new Blob(chunks, { type: mime ? mime.split(";")[0] : "video/webm" });
+          const a = document.createElement("a");
+          a.href = URL.createObjectURL(blob);
+          a.download = "clips-limpieza-mi-clip.webm";
+          document.body.appendChild(a); a.click(); a.remove();
+          setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+          setExportStatus("Listo: tu clip se descargó en " + state.quality + " con tu marca, textos, efectos y sonidos.", 100);
+          toast("Clip exportado y descargado.");
+        } catch (err) {
+          stopLayers();
+          setExportStatus("No se pudo exportar: " + (err && err.message ? err.message : "error desconocido") + ". Prueba de nuevo con el archivo del video subido desde tu equipo.", null);
+        } finally {
+          exporting = false;
+          exportClip = null;
+          $("#exportBtn").disabled = false; $("#exportBtnTop").disabled = false;
+          const c = selectedClip();
+          if (c) loadIntoPreview(c, false);
+        }
+      }
+      $("#exportBtn").addEventListener("click", exportVideo);
+      $("#exportBtnTop").addEventListener("click", exportVideo);
+
+      /* ================= INICIO ================= */
+      addTextItem({ text: "", start: 0, end: 5 });
+      buildSoundCards();
+      renderClips();
+      renderTimeline();
+      updateStudioStatus();
+      renderWatermark();
+      renderTexts();
+      renderLayers();
+      applyFilter();
+      applyFx();
+      updateTextOverlays();
+</script>
+<script>
+"use strict";
+/* ===== Funciones nuevas: barra lateral, sesión en vivo, stickers, biblioteca ===== */
+const $x = (s, r) => (r || document).querySelector(s);
+const $$x = (s, r) => Array.from((r || document).querySelectorAll(s));
+function toastX(msg){ const t = $x("#toast"); if(!t) return; t.textContent = msg; t.classList.add("show"); setTimeout(()=>t.classList.remove("show"), 3400); }
+function fmtX(sec){ sec = Math.max(0, Math.round(sec||0)); return Math.floor(sec/60) + ":" + String(sec%60).padStart(2,"0"); }
+
+let currentSec = "directos";
+let editorTab = "clips";
+function showSection(name){
+  currentSec = name;
+  $$x(".side-btn").forEach(b => b.classList.toggle("active", b.dataset.sec === name));
+  const labels = { videos: "Videos y Enlaces", directos: "En Vivos / Streaming", editor: "Editor 9:16 y Pegar", publicar: "Publicar y Biblioteca" };
+  $x("#crumbLabel").textContent = labels[name] || name;
+  $x("#panelLive").hidden = !(name === "videos" || name === "directos");
+  $x("#panelEditor").hidden = name !== "editor";
+  $x("#panelPublicar").hidden = name !== "publicar";
+  if (name === "videos") $x("#liveTitle").textContent = "Videos con Enlace y Directos";
+  if (name === "directos") $x("#liveTitle").textContent = "Ver Streaming En Vivo y Cortar Sin Parar";
+  if (name === "editor") {
+    $$x(".tool-btn").forEach(b => { const on = b.dataset.tab === editorTab; b.classList.toggle("active", on); b.setAttribute("aria-selected", on ? "true" : "false"); });
+    $$x(".tab-panel").forEach(p => { if (p.dataset.panel !== "publicar") p.hidden = p.dataset.panel !== editorTab; });
+  }
+  if (name === "publicar") {
+    $$x(".tab-panel").forEach(p => { p.hidden = p.dataset.panel !== "publicar"; });
+  }
+  $x("#sidebar").classList.remove("open");
+}
+$$x(".side-btn").forEach(b => b.addEventListener("click", () => showSection(b.dataset.sec)));
+$x("#menuToggle").addEventListener("click", () => $x("#sidebar").classList.toggle("open"));
+$$x(".tool-btn").forEach(b => b.addEventListener("click", () => { editorTab = b.dataset.tab; }));
+$x("#goEnlacesBtn").addEventListener("click", () => showSection("videos"));
+$x("#heroLinkBtn").addEventListener("click", () => showSection("editor"));
+$x("#goPegarBtn").addEventListener("click", () => showSection("editor"));
+$x("#pasteExportBtn").addEventListener("click", () => $x("#exportBtn").click());
+$x("#uploadLiveBtn").addEventListener("click", () => $x("#fileInput").click());
+
+/* ===== Detección de origen + vistas Twitch / Kick / archivo directo ===== */
+function detectPlatform(url){
+  const u = String(url || "");
+  if (/(?:youtube\.com\/(?:watch|live|shorts|embed)|youtu\.be\/)/i.test(u)) return /\/live\/|[?&]live=/i.test(u) || /live/i.test(u) ? "YouTube / Live" : "YouTube / Live";
+  if (/tiktok\.com/i.test(u)) return /live/i.test(u) ? "TikTok / Live" : "TikTok / Live";
+  if (/twitch\.tv/i.test(u)) return "Twitch";
+  if (/kick\.com/i.test(u)) return "Kick";
+  if (/facebook\.com|fb\.watch/i.test(u)) return "Facebook";
+  return "";
+}
+function updateOrigen(v){
+  const p = detectPlatform(v);
+  const el = $x("#origenDetectado");
+  if (p) { el.hidden = false; el.textContent = "Origen detectado: " + p + " ✓"; }
+  else el.hidden = true;
+  return p;
+}
+let platformTimer = null;
+$x("#linkInput").addEventListener("input", (e) => {
+  const v = e.target.value.trim();
+  updateOrigen(v);
+  clearTimeout(platformTimer);
+  platformTimer = setTimeout(() => {
+    const tw = v.match(/twitch\.tv\/([\w-]+)/i);
+    const kk = v.match(/kick\.com\/([\w-]+)/i);
+    const box = $x("#livePreview"), frame = $x("#liveFrame");
+    if (tw) {
+      box.hidden = false;
+      frame.src = "https://player.twitch.tv/?channel=" + tw[1] + "&parent=" + location.hostname + "&autoplay=true";
+      $x("#nowPlaying").textContent = "En vivo: Twitch · " + tw[1];
+    } else if (kk) {
+      box.hidden = false;
+      frame.src = "https://player.kick.com/" + kk[1] + "?autoplay=true";
+      $x("#nowPlaying").textContent = "En vivo: Kick · " + kk[1];
+    } else if (/\.(m3u8|mp4|webm)(\?|#|$)/i.test(v)) {
+      box.hidden = true;
+      const pv = $x("#preview"); pv.src = v; pv.play().catch(()=>{});
+      $x("#nowPlaying").textContent = "En vivo: transmisión directa del enlace";
+    }
+  }, 500);
+});
+$x("#linkInput").addEventListener("paste", () => { setTimeout(() => updateOrigen($x("#linkInput").value.trim()), 0); });
+if ($x("#linkInput").value.trim()) updateOrigen($x("#linkInput").value.trim());
+
+/* ===== Segundos / cantidad ===== */
+function segVal(){ const v = parseInt($x("#segClip").value, 10); return isFinite(v) ? Math.min(300, Math.max(3, v)) : 15; }
+function cantVal(){ return parseInt($x("#cantSlider").value, 10) || 100; }
+function syncSeg(){
+  const s = segVal();
+  $x("#segClipVal").textContent = s + "s";
+  $$x(".segEcho").forEach(e => e.textContent = s);
+  $$x("#segChips .chip").forEach(c => c.classList.toggle("active", parseInt(c.dataset.seg,10) === s));
+  updateLiveBtn();
+}
+function syncCant(){
+  const c = cantVal();
+  const unlim = c >= 100;
+  $x("#cantVal").textContent = unlim ? "∞ ILIMITADO" : c + " clips";
+  $x("#cantVal").style.color = unlim ? "var(--emerald)" : "#fb7185";
+  $x("#sideModo").textContent = unlim ? "∞ Ilimitado (Sin límite)" : "1 a 100 (" + c + ")";
+  $$x("#cantChips .chip").forEach(ch => ch.classList.toggle("active", parseInt(ch.dataset.cant,10) === c));
+  updateLiveBtn();
+}
+function updateLiveBtn(){
+  const c = cantVal();
+  $x("#liveStartBtn").textContent = c >= 100 ? "▶ Ver En Vivo y Cortar ILIMITADO" : "▶ Ver En Vivo y Cortar (" + c + " clips)";
+}
+$x("#segClip").addEventListener("input", syncSeg);
+$$x("#segChips .chip").forEach(c => c.addEventListener("click", () => { $x("#segClip").value = c.dataset.seg; syncSeg(); }));
+$x("#cantSlider").addEventListener("input", syncCant);
+$$x("#cantChips .chip").forEach(c => c.addEventListener("click", () => { $x("#cantSlider").value = c.dataset.cant; syncCant(); }));
+$x("#wmLive").addEventListener("input", (e) => { const w = $x("#wmText"); w.value = e.target.value; w.dispatchEvent(new Event("input", { bubbles: true })); });
+$x("#encuadreSel").addEventListener("change", (e) => { $x("#preview").style.objectFit = e.target.value === "crop" ? "cover" : "contain"; });
+
+/* ===== Sesión en vivo: temporizador y cortes marcados ===== */
+const liveSession = { active: false, startedAt: 0, timer: null, clips: [], lastCutAt: 0 };
+function aviso(msg){ $x("#avisoLink").textContent = msg || ""; }
+function liveElapsed(){ return liveSession.active ? (Date.now() - liveSession.startedAt) / 1000 : 0; }
+function renderLiveClips(){
+  const list = $x("#liveClipList");
+  $x("#liveSessionHead").textContent = "● DIRECTO EN VIVO · " + liveSession.clips.length + " CLIPS DE ESTA SESIÓN" + (liveSession.active ? " · Siguiente en " + Math.max(0, Math.ceil(segVal() - (liveElapsed() - liveSession.lastCutAt))) + "s" : "");
+  $x("#liveStopN").textContent = liveSession.clips.length;
+  if (!liveSession.clips.length) {
+    list.innerHTML = liveSession.active
+      ? '<p class="hint" style="margin:0">⏳ Grabando el primer bloque de ' + segVal() + ' segundos en tiempo real…<br>Transcurrido: ' + fmtX(liveElapsed()) + ' de ' + segVal() + 's. Apenas pasen los ' + segVal() + 's aparecerá aquí el Clip #1 listo para llevar al Editor.</p>'
+      : '<p class="hint" style="margin:0">Todavía no hay clips de esta sesión. Pulsa «Ver En Vivo y Cortar» y aquí van apareciendo, bloque a bloque.</p>';
+    return;
+  }
+  list.innerHTML = "";
+  liveSession.clips.forEach((c) => {
+    const row = document.createElement("div");
+    row.className = "live-row";
+    row.innerHTML = "<b>✓ Clip En Vivo #" + c.n + " (" + c.dur + "s)</b>" + (c.score ? '<span class="score-chip">⭐ ' + c.score + "/100 " + c.motivo + "</span>" : "") +
+      "<br><span style='color:var(--faint)'>" + c.hora + " → segundos " + c.start + "–" + c.end + " del enlace</span>" +
+      '<div class="clip-actions"><button class="mini-btn" type="button" data-a="dl">Cortar / Descargar</button><button class="mini-btn" type="button" data-a="cola">+ Cola</button><button class="mini-btn" type="button" data-a="editor">✂ Llevar al Editor →</button></div>';
+    row.querySelector('[data-a="dl"]').addEventListener("click", () => {
+      $x("#linkStart").value = c.start; $x("#linkEnd").value = c.end;
+      aviso("Bajando el Clip #" + c.n + " (segundos " + c.start + "–" + c.end + ") con tu servidor… Si el directo sigue en curso, el servidor lo rechaza hasta que termine: el corte queda guardado en esta lista.");
+      /* Que la carga no borre el enlace al terminar: los demás clips de
+         la sesión se bajan del mismo enlace. */
+      $x("#loadLinkBtn").dataset.keepUrl = "1";
+      $x("#loadLinkBtn").click();
+    });
+    row.querySelector('[data-a="cola"]').addEventListener("click", () => { addCorteQueue([c]); toastX("Clip #" + c.n + " añadido a la cola del Editor."); });
+    row.querySelector('[data-a="editor"]').addEventListener("click", () => { addCorteQueue([c]); showSection("editor"); });
+    list.appendChild(row);
+  });
+}
+function addLiveClip(){
+  const dur = segVal();
+  const end = Math.floor(liveElapsed());
+  const start = Math.max(0, end - dur);
+  const c = { n: liveSession.clips.length + 1, start, end, dur, hora: new Date().toLocaleTimeString("es", { hour: "2-digit", minute: "2-digit", second: "2-digit" }) };
+  liveSession.clips.push(c);
+  liveSession.lastCutAt = liveElapsed();
+  const ov = $x("#cutOverlay");
+  ov.hidden = false; ov.textContent = "⚡ CORTANDO CLIP #" + c.n + " EN 9:16…";
+  setTimeout(() => { ov.hidden = true; }, 1600);
+  renderLiveClips(); syncBadges();
+  const max = cantVal();
+  if (max < 100 && liveSession.clips.length >= max) stopLive("Se alcanzó la cantidad elegida: " + max + " clips.");
+}
+function startLive(){
+  const url = $x("#linkInput").value.trim();
+  if (!url) { aviso("Pega primero el enlace del directo o video."); $x("#linkInput").focus(); return; }
+  if (!detectPlatform(url) && !/\.(m3u8|mp4|webm)/i.test(url)) { aviso("Ese enlace no se reconoce como YouTube, TikTok, Twitch, Kick, Facebook ni transmisión directa."); return; }
+  aviso("");
+  liveSession.active = true; liveSession.startedAt = Date.now(); liveSession.lastCutAt = 0;
+  $x("#liveStopBtn").hidden = false; $x("#liveStartBtn").hidden = true; $x("#manualClipBtn").hidden = false;
+  clearInterval(liveSession.timer);
+  liveSession.timer = setInterval(() => {
+    const el = liveElapsed();
+    $x("#stageStatus").textContent = "REC " + fmtX(el) + (liveSession.clips.length ? " · Corte #" + (liveSession.clips.length + 1) : "");
+    $x("#stageStatus").style.color = "var(--emerald)";
+    if ($x("#autoCutChk").checked && el - liveSession.lastCutAt >= segVal()) addLiveClip();
+    else if (liveSession.clips.length === 0) renderLiveClips();
+    else { const h = $x("#liveSessionHead"); if (h) h.textContent = "● DIRECTO EN VIVO · " + liveSession.clips.length + " CLIPS DE ESTA SESIÓN · Siguiente en " + Math.max(0, Math.ceil(segVal() - (el - liveSession.lastCutAt))) + "s"; }
+  }, 500);
+  renderLiveClips();
+  toastX("En vivo: mirando y cortando cada " + segVal() + "s. Los cortes quedan marcados abajo con sus segundos.");
+}
+function stopLive(msg){
+  liveSession.active = false;
+  clearInterval(liveSession.timer);
+  $x("#liveStopBtn").hidden = true; $x("#liveStartBtn").hidden = false; $x("#manualClipBtn").hidden = true;
+  $x("#stageStatus").textContent = liveSession.clips.length ? "Sesión terminada · " + liveSession.clips.length + " clips marcados" : "En espera";
+  $x("#stageStatus").style.color = "var(--muted)";
+  if (msg) aviso(msg);
+  renderLiveClips();
+}
+$x("#liveStartBtn").addEventListener("click", startLive);
+$x("#liveStopBtn").addEventListener("click", () => stopLive("En vivo detenido: " + liveSession.clips.length + " clips guardados en la lista de la sesión."));
+$x("#manualClipBtn").addEventListener("click", () => { if (liveSession.active) addLiveClip(); });
+$x("#liveClearBtn").addEventListener("click", () => { liveSession.clips = []; renderLiveClips(); syncBadges(); });
+
+/* ===== Cola de cortes en el Editor ===== */
+const cortesQueue = [];
+function addCorteQueue(items){
+  items.forEach(c => { if (!cortesQueue.some(q => q.n === c.n && q.start === c.start)) cortesQueue.push(c); });
+  renderCortesQueue(); syncBadges();
+}
+function renderCortesQueue(){
+  const box = $x("#cortesQueueBox"), list = $x("#cortesQueueList");
+  box.hidden = cortesQueue.length === 0;
+  list.innerHTML = "";
+  cortesQueue.forEach((c, i) => {
+    const row = document.createElement("div");
+    row.className = "live-row";
+    row.innerHTML = "<b>Corte #" + c.n + "</b> · segundos " + c.start + "–" + c.end + " (" + c.dur + "s)" +
+      '<div class="clip-actions"><button class="mini-btn" type="button">Quitar</button></div>';
+    row.querySelector("button").addEventListener("click", () => { cortesQueue.splice(i, 1); renderCortesQueue(); syncBadges(); });
+    list.appendChild(row);
+  });
+  const g = $x("#goPegarBtn");
+  g.hidden = cortesQueue.length === 0 || currentSec === "editor";
+  $x("#goPegarN").textContent = cortesQueue.length;
+}
+$x("#liveToEditorBtn").addEventListener("click", () => {
+  if (!liveSession.clips.length) { toastX("Todavía no hay clips en esta sesión."); return; }
+  addCorteQueue(liveSession.clips.slice());
+  showSection("editor");
+  toastX(liveSession.clips.length + " cortes en la cola del Editor. Cuando el video esté cargado como clip, aplica sus segundos en «Pegar Clips» y exporta.");
+});
+
+/* ===== Capturar Pantalla en Vivo (getDisplayMedia + MediaRecorder) ===== */
+let screenRec = null, screenChunks = [], screenStream = null;
+$x("#screenBtn").addEventListener("click", async () => {
+  if (screenRec) {
+    screenRec.stop();
+    return;
+  }
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getDisplayMedia) { aviso("Este navegador no permite capturar la pantalla."); return; }
+  try {
+    screenStream = await navigator.mediaDevices.getDisplayMedia({ video: true, audio: true });
+  } catch (e) { aviso("Captura cancelada: " + (e && e.message ? e.message : "permiso denegado")); return; }
+  screenChunks = [];
+  screenRec = new MediaRecorder(screenStream);
+  screenRec.ondataavailable = (e) => { if (e.data && e.data.size) screenChunks.push(e.data); };
+  screenRec.onstop = () => {
+    const blob = new Blob(screenChunks, { type: screenRec.mimeType || "video/webm" });
+    const file = new File([blob], "captura-en-vivo.webm", { type: blob.type });
+    const dt = new DataTransfer(); dt.items.add(file);
+    const fi = $x("#fileInput"); fi.files = dt.files; fi.dispatchEvent(new Event("change", { bubbles: true }));
+    screenStream.getTracks().forEach(t => t.stop());
+    screenRec = null; screenStream = null;
+    $x("#screenBtn").textContent = "🔴 Capturar Pantalla en Vivo";
+    toastX("Captura guardada como clip en el Editor.");
+  };
+  screenRec.start(500);
+  $x("#screenBtn").textContent = "⏹ Detener Pantalla (" + liveSession.clips.length + " guardados)";
+  toastX("Capturando tu pantalla o pestaña… pulsa el mismo botón para detener y guardar el clip.");
+});
+
+/* ===== Mejores momentos: energía de audio real del clip cargado ===== */
+$x("#bestBtn").addEventListener("click", async () => {
+  const pv = $x("#preview");
+  const src = pv.currentSrc || pv.src;
+  const box = $x("#bestBox"), list = $x("#bestList"), note = $x("#bestNote");
+  box.hidden = false; list.innerHTML = "";
+  if (!src) {
+    note.textContent = "No hay ningún clip cargado para analizar. Para un enlace en vivo, el análisis se hace sobre los últimos 3 minutos una vez el video está cargado como clip; si el enlace no deja leer su audio en el servidor, aquí verás ese motivo real en vez de puntajes inventados.";
+    aviso("Sin clip cargado no se puede medir el audio de este enlace (el enlace no deja leerlo desde la página). Carga el video con «Cargar video» o sube el archivo y vuelve a pulsar.");
+    return;
+  }
+  note.textContent = "Midiendo el audio del clip cargado, segundo a segundo…";
+  try {
+    const buf = await (await fetch(src)).arrayBuffer();
+    const AC = window.AudioContext || window.webkitAudioContext;
+    const ctx = new AC();
+    const audio = await ctx.decodeAudioData(buf.slice(0));
+    const data = audio.getChannelData(0);
+    const sr = audio.sampleRate, dur = Math.floor(audio.duration);
+    const perSec = [];
+    for (let s = 0; s < dur; s++) {
+      let sum = 0; const from = s * sr, to = Math.min(data.length, from + sr);
+      for (let i = from; i < to; i += 16) sum += data[i] * data[i];
+      perSec.push(Math.sqrt(sum / Math.max(1, (to - from) / 16)));
+    }
+    const max = Math.max.apply(null, perSec.concat([0.0001]));
+    const seg = segVal();
+    const moments = []; let ignored = 0;
+    for (let start = 0; start + 3 <= dur; start += seg) {
+      const end = Math.min(dur, start + seg);
+      let peak = 0; for (let s = start; s < end; s++) peak = Math.max(peak, perSec[s] || 0);
+      const score = Math.round((peak / max) * 100);
+      if (score >= 55) moments.push({ start, end, score, motivo: "🔊 Pico de audio" });
+      else ignored++;
+    }
+    moments.sort((a, b) => b.score - a.score);
+    $x("#bestHead").textContent = "Mejores momentos · " + moments.length + " encontrados";
+    note.textContent = (detectPlatform($x("#linkInput").value.trim()) ? "📡 Análisis del clip cargado: " : "") +
+      (ignored ? "⚡ Se ignoraron " + ignored + " tramos sin actividad (silencio o sin conversación) — solo quedaron los mejores momentos. " : "") +
+      "Puntaje según el volumen real del audio (umbral 55).";
+    if (!moments.length) { list.innerHTML = '<p class="hint" style="margin:0">Ningún tramo superó el umbral: el audio es muy parejo o silencioso.</p>'; return; }
+    moments.slice(0, 20).forEach(mo => {
+      const row = document.createElement("div");
+      row.className = "live-row";
+      row.innerHTML = "<b>" + fmtX(mo.start) + " – " + fmtX(mo.end) + "</b>" + '<span class="score-chip">⭐ ' + mo.score + "/100 " + mo.motivo + "</span>" +
+        '<div class="clip-actions"><button class="mini-btn" type="button" data-a="ver">👁 Ver</button><button class="mini-btn" type="button" data-a="cortar">✂ Cortar este momento</button></div>';
+      row.querySelector('[data-a="ver"]').addEventListener("click", () => { try { pv.currentTime = mo.start; } catch (e) {} pv.play().catch(()=>{}); });
+      row.querySelector('[data-a="cortar"]').addEventListener("click", () => { addCorteQueue([{ n: cortesQueue.length + liveSession.clips.length + 1, start: mo.start, end: mo.end, dur: mo.end - mo.start, hora: "" }]); toastX("Momento añadido a la cola del Editor."); });
+      list.appendChild(row);
+    });
+    const all = document.createElement("button");
+    all.className = "btn btn-amber btn-sm"; all.type = "button"; all.style.width = "100%"; all.style.marginTop = "8px";
+    all.textContent = "✂ Pegar TODOS (" + moments.length + ") en 9:16 →";
+    all.addEventListener("click", () => { addCorteQueue(moments.map((mo, i) => ({ n: i + 1, start: mo.start, end: mo.end, dur: mo.end - mo.start, hora: "", score: mo.score, motivo: mo.motivo }))); showSection("editor"); });
+    list.appendChild(all);
+  } catch (e) {
+    note.textContent = "No se pudo medir el audio de este video en la página (" + (e && e.message ? e.message : "formato no legible") + "). Prueba con otro enlace o sube el video como archivo.";
+    aviso(note.textContent);
+  }
+});
+
+/* ===== Stickers ===== */
+const stickerState = { content: "", img: null, pos: "tr", size: 100 };
+function renderSticker(){
+  const ov = $x("#stickerOverlay");
+  if (!stickerState.content && !stickerState.img) { ov.hidden = true; ov.innerHTML = ""; return; }
+  ov.hidden = false; ov.innerHTML = "";
+  const pad = "3.5%"; ov.style.cssText = "";
+  if (stickerState.pos === "tl") { ov.style.top = pad; ov.style.left = pad; }
+  if (stickerState.pos === "tr") { ov.style.top = pad; ov.style.right = pad; }
+  if (stickerState.pos === "bl") { ov.style.bottom = pad; ov.style.left = pad; }
+  if (stickerState.pos === "br") { ov.style.bottom = pad; ov.style.right = pad; }
+  if (stickerState.pos === "cc") { ov.style.top = "50%"; ov.style.left = "50%"; ov.style.transform = "translate(-50%,-50%)"; }
+  if (stickerState.img) {
+    const img = document.createElement("img"); img.src = stickerState.img; img.alt = "";
+    img.style.width = (90 * stickerState.size / 100) + "px"; ov.appendChild(img);
+  } else {
+    const s = document.createElement("span"); s.textContent = stickerState.content;
+    s.style.fontSize = (44 * stickerState.size / 100) + "px"; ov.appendChild(s);
+  }
+}
+["🔥","😂","😱","💯","⚡","👀","💀","🎯","🚀","❤️","👏","🤯"].forEach(em => {
+  const b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.textContent = em; b.style.fontSize = "1.15rem";
+  b.addEventListener("click", () => { stickerState.content = em; stickerState.img = null; renderSticker(); });
+  $x("#stickerChips").appendChild(b);
+});
+$x("#pickStickerBtn").addEventListener("click", () => $x("#stickerInput").click());
+$x("#stickerInput").addEventListener("change", (e) => {
+  const f = (e.target.files || [])[0]; if (!f) return;
+  stickerState.img = URL.createObjectURL(f); stickerState.content = ""; renderSticker(); e.target.value = "";
+});
+$x("#stickerSize").addEventListener("input", (e) => { stickerState.size = parseInt(e.target.value, 10); $x("#stickerSizeOut").textContent = stickerState.size + "%"; renderSticker(); });
+$$x("#stickerPos .chip").forEach(b => b.addEventListener("click", () => { $$x("#stickerPos .chip").forEach(x => x.classList.remove("active")); b.classList.add("active"); stickerState.pos = b.dataset.spos; renderSticker(); }));
+$x("#stickerClearBtn").addEventListener("click", () => { stickerState.content = ""; stickerState.img = null; renderSticker(); });
+
+/* ===== Efectos extra: velocidad global, ganancia, encuadre ===== */
+$x("#speedSel").addEventListener("change", (e) => { $x("#preview").playbackRate = parseFloat(e.target.value) || 1; });
+$x("#audioGain").addEventListener("input", (e) => {
+  const g = parseInt(e.target.value, 10);
+  $x("#audioGainOut").textContent = (g / 100).toFixed(2) + "x";
+  $x("#preview").volume = Math.min(1, g / 100);
+});
+$$x("#frameChips .chip").forEach(b => b.addEventListener("click", () => {
+  $$x("#frameChips .chip").forEach(x => x.classList.remove("active")); b.classList.add("active");
+  $x("#preview").style.objectFit = b.dataset.frame === "crop" ? "cover" : "contain";
+  $x("#encuadreSel").value = b.dataset.frame;
+}));
+
+/* ===== Subtítulos automáticos (SpeechRecognition si existe) ===== */
+$x("#autoSubBtn").addEventListener("click", () => {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const note = $x("#autoSubNote");
+  if (!SR) { note.textContent = "Tu navegador no trae reconocimiento de voz, así que no se pueden generar solos: hace falta la transcripción del audio. Escribe las líneas aquí con sus segundos de inicio y fin."; return; }
+  const pv = $x("#preview");
+  if (!pv.src) { note.textContent = "Carga primero un clip: los subtítulos se generan escuchando su audio mientras se reproduce."; return; }
+  const rec = new SR(); rec.lang = "es-ES"; rec.continuous = true; rec.interimResults = false;
+  const t0 = pv.currentTime || 0;
+  rec.onresult = (ev) => {
+    for (let i = ev.resultIndex; i < ev.results.length; i++) {
+      if (!ev.results[i].isFinal) continue;
+      const txt = ev.results[i][0].transcript.trim(); if (!txt) continue;
+      if ($$x("#textList .text-item").length >= 5) { note.textContent = "Ya tienes las 5 líneas de subtítulos permitidas."; try { rec.stop(); } catch (e) {} return; }
+      $x("#addTextBtn").click();
+      const items = $$x("#textList .text-item");
+      const last = items[items.length - 1];
+      if (last) {
+        const inp = last.querySelector('[data-f="text"]'); inp.value = txt; inp.dispatchEvent(new Event("input", { bubbles: true }));
+        const st = last.querySelector('[data-f="start"]'); st.value = Math.round(pv.currentTime); st.dispatchEvent(new Event("change", { bubbles: true }));
+        const en = last.querySelector('[data-f="end"]'); en.value = Math.round(pv.currentTime) + 4; en.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+    }
+  };
+  rec.onerror = (e) => { note.textContent = "El reconocimiento de voz falló (" + e.error + "). Escribe los subtítulos a mano con sus segundos."; };
+  try { rec.start(); pv.play().catch(()=>{}); note.textContent = "Escuchando el audio del clip (desde el segundo " + Math.round(t0) + ")… las líneas aparecen aquí abajo. Pulsa pausa en el video para terminar."; }
+  catch (e) { note.textContent = "No se pudo iniciar el reconocimiento de voz en este navegador."; }
+});
+
+/* ===== Biblioteca + insignias + sesión (observa la lista de clips del editor) ===== */
+function syncBadges(){
+  const n = $$x("#clipList .clip-item").length;
+  const total = n + liveSession.clips.length;
+  $x("#badgeCortes").hidden = cortesQueue.length === 0;
+  $x("#badgeCortes").textContent = cortesQueue.length;
+  $x("#badgeClips").hidden = n === 0;
+  $x("#badgeClips").textContent = n;
+  $x("#sideSesion").textContent = total + " videos MP4";
+  $x("#pegarTabLabel").textContent = "✂ Pegar Clips (" + n + ")";
+  const lib = $x("#libraryList");
+  if (!n) { lib.innerHTML = '<p class="hint" style="margin:0">Sin clips todavía: cuando añades videos aparecen aquí con sus botones.</p>'; return; }
+  lib.innerHTML = "";
+  $$x("#clipList .clip-item").forEach((item, i) => {
+    const name = (item.querySelector(".clip-name") || {}).textContent || ("Clip " + (i + 1));
+    const row = document.createElement("div");
+    row.className = "live-row";
+    row.innerHTML = "<b>" + name.replace(/</g, "&lt;") + '</b><div class="clip-actions"><button class="mini-btn" type="button" data-a="edit">Abrir en el editor</button><button class="mini-btn" type="button" data-a="pub">Publicar</button></div>';
+    row.querySelector('[data-a="edit"]').addEventListener("click", () => showSection("editor"));
+    row.querySelector('[data-a="pub"]').addEventListener("click", () => toastX("Cuando exportes el clip, descárgalo y súbelo con el título y los hashtags de aquí abajo (o con tu token propio)."));
+    lib.appendChild(row);
+  });
+}
+new MutationObserver(() => syncBadges()).observe($x("#clipList"), { childList: true, subtree: true });
+
+/* ===== Publicar: redes ===== */
+$$x("#netChips .chip").forEach(b => b.addEventListener("click", () => {
+  const net = b.dataset.net;
+  const tokId = net.indexOf("YouTube") === 0 ? "#tokYt" : net === "TikTok" ? "#tokTk" : net.indexOf("Facebook") === 0 ? "#tokFb" : "";
+  const hasTok = tokId && $x(tokId).value.trim();
+  if (hasTok) toastX(net + ": token cargado. La publicación directa con tu token se hace desde tu cuenta; el clip exportado ya lleva título y hashtags copiados.");
+  else toastX(net + ": sin tu token propio no se puede publicar solo. Descarga el clip exportado y súbelo a " + net + " con el título y los hashtags generados aquí.");
+  const copyAll = $x("#copyAllBtn"); if (copyAll && !$x("#copyRow").hidden) copyAll.click();
+}));
+
+/* ===== Reproductor de música gratis ===== */
+let demoCtx = null;
+function demoAc(){ if (!demoCtx) demoCtx = new (window.AudioContext || window.webkitAudioContext)(); if (demoCtx.state === "suspended") demoCtx.resume(); return demoCtx; }
+function demoTone(f, d, delay, type, vol){
+  const ctx = demoAc(), t0 = ctx.currentTime + (delay || 0);
+  const o = ctx.createOscillator(), g = ctx.createGain();
+  o.type = type || "triangle"; o.frequency.value = f;
+  g.gain.setValueAtTime(0.0001, t0); g.gain.exponentialRampToValueAtTime(vol || 0.12, t0 + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t0 + d);
+  o.connect(g); g.connect(ctx.destination); o.start(t0); o.stop(t0 + d + 0.05);
+}
+const DEMO = {
+  ritmo(){ [[220,261.6,329.6],[174.6,220,261.6],[196,246.9,293.7],[164.8,196,246.9]].forEach((ch,ci)=>ch.forEach((f,ni)=>demoTone(f,1.1,ci*1.2+ni*0.14,"triangle",0.1))); },
+  tension(){ for (let i=0;i<8;i++){ demoTone(55,0.55,i*0.75,"sine",0.4); demoTone(i%2?82.4:73.4,0.4,i*0.75+0.05,"triangle",0.14); } },
+  alegre(){ [523.3,659.3,784,1046.5,784,659.3,587.3,659.3].forEach((f,i)=>demoTone(f,0.24,i*0.25,"square",0.08)); }
+};
+$$x("[data-demo-track]").forEach(b => b.addEventListener("click", () => { try { DEMO[b.dataset.demoTrack](); } catch (e) {} }));
+$x("#ownAudio").addEventListener("change", (e) => {
+  const f = (e.target.files || [])[0]; if (!f) return;
+  const p = $x("#ownAudioPlayer"); p.src = URL.createObjectURL(f); p.hidden = false; p.play().catch(()=>{});
+});
+
+/* color de la marca de agua */
+$x("#wmColor").addEventListener("input", (e) => { const s = $x("#wmOverlay .wm-text"); if (s) s.style.color = e.target.value; });
+
+syncSeg(); syncCant(); renderLiveClips(); syncBadges();
+showSection("directos");
+
+</script>
+</body>
+</html>
